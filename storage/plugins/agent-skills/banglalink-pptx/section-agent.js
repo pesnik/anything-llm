@@ -195,9 +195,17 @@ Your task is to research the given section topic using web search, then create s
 ## Visual Design Principles
 - Every slide needs a visual anchor: large stat callout, chart, icon grid, or image cards
 - Use color dominance: 60-70% white/light, 20% orange accent, 10% dark text
-- Typography hierarchy: titles 24pt+ bold, body 13-14pt, captions 10pt muted
 - Leave breathing room — don't fill every inch with text
 - Icons in colored circles next to headers add polish
+
+## Typography Hierarchy (use these exact sizes)
+- Display (hero titles, big numbers): 48pt bold
+- Heading (slide titles): 28pt bold
+- Subhead (subtitles, card headers): 18pt bold
+- Body (paragraph text): 14pt normal
+- Caption (labels, metadata): 12pt normal
+- Micro (footnotes): 10pt normal
+- NEVER use body size for titles — titles must be 24pt+ to stand out
 
 ## Brand Guidelines
 - Primary colors: Orange (#EF6E23 for headers), Amber (#FAA106 for accents)

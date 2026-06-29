@@ -157,6 +157,48 @@ module.exports = {
     colH: 3.5,
   },
 
+  // ── Color palette weight hierarchy (60/30/10 rule) ──
+  palette: {
+    // 60% dominant: backgrounds, large surfaces
+    dominant: {
+      light: (tokens?.colors?.white || "#FFFFFF").replace("#", ""),
+      dark: (tokens?.colors?.dark || "#1C1C1C").replace("#", ""),
+    },
+    // 30% secondary: headers, cards, secondary elements
+    secondary: {
+      primary: (tokens?.colors?.swoosh_orange || "#EF6E23").replace("#", ""),
+      amber: (tokens?.colors?.amber || "#FAA106").replace("#", ""),
+    },
+    // 10% accent: highlights, CTAs, small emphasis
+    accent: {
+      deep: (tokens?.colors?.deep_orange || "#F86C02").replace("#", ""),
+      highlight: (tokens?.colors?.yellow_highlight || "#FFF2CC").replace("#", ""),
+    },
+    // Text hierarchy
+    text: {
+      primary: (tokens?.colors?.near_black || "#171616").replace("#", ""),
+      secondary: (tokens?.colors?.mid_gray || "#8B8A8A").replace("#", ""),
+      muted: (tokens?.colors?.divider_gray || "#D9D9D9").replace("#", ""),
+      inverse: (tokens?.colors?.white || "#FFFFFF").replace("#", ""),
+    },
+  },
+
+  // ── Typography hierarchy (Anthropic-inspired) ──
+  typography: {
+    // Display: hero titles, big numbers
+    display: { size: 48, weight: "bold", tracking: -0.5 },
+    // Heading: slide titles, section headers
+    heading: { size: 28, weight: "bold", tracking: 0 },
+    // Subhead: subtitles, card headers
+    subhead: { size: 18, weight: "bold", tracking: 0 },
+    // Body: paragraph text
+    body: { size: 14, weight: "normal", tracking: 0 },
+    // Caption: labels, metadata
+    caption: { size: 12, weight: "normal", tracking: 0 },
+    // Micro: footnotes, fine print
+    micro: { size: 10, weight: "normal", tracking: 0 },
+  },
+
   isDarkColor(hexColor) {
     const hex = (hexColor || "FFFFFF").replace("#", "");
     const r = parseInt(hex.substr(0, 2), 16);

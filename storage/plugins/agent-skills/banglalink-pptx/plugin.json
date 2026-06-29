@@ -1,0 +1,58 @@
+{
+  "hubId": "banglalink-pptx",
+  "name": "Banglalink PPTX Generator",
+  "active": true,
+  "displayName": "Banglalink PPTX Generator",
+  "description": "Generate Banglalink-branded PowerPoint presentations with per-section AI research, Playwright HTML rendering, and strict brand compliance. Creates professional slide decks following Banglalink's Nov 2025 rebrand guidelines with orange (#F56F1F) theme, Arial typography, and ghost logo placement.",
+  "author": "Banglalink / AnythingLLM Community",
+  "version": "1.0.0",
+  "trigger": {
+    "keywords": [
+      "presentation",
+      "ppt",
+      "pptx",
+      "slides",
+      "powerpoint",
+      "banglalink",
+      "deck",
+      "slide deck",
+      "presentation generator"
+    ],
+    "description": "Generate a Banglalink-branded PowerPoint presentation"
+  },
+  "entrypoint": {
+    "params": {
+      "topic": {
+        "type": "string",
+        "required": true,
+        "description": "The main topic or subject of the presentation"
+      },
+      "sections": {
+        "type": "array",
+        "required": false,
+        "description": "Array of section objects, each with title, topic, description, and optional bulletPoints"
+      },
+      "audience": {
+        "type": "string",
+        "required": false,
+        "description": "Target audience for the presentation (e.g., 'Senior Management', 'Technical Team')"
+      },
+      "outputFileName": {
+        "type": "string",
+        "required": false,
+        "description": "Custom output filename (without extension)"
+      },
+      "theme": {
+        "type": "string",
+        "required": false,
+        "enum": ["dark", "light"],
+        "description": "Slide theme: dark (default) or light"
+      },
+      "enableResearch": {
+        "type": "boolean",
+        "required": false,
+        "description": "Enable AI web research per section (default: true)"
+      }
+    }
+  }
+}

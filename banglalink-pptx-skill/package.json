@@ -1,0 +1,17 @@
+{
+  "name": "banglalink-pptx",
+  "version": "1.0.0",
+  "description": "Banglalink-branded PowerPoint presentation generator for AnythingLLM",
+  "main": "handler.js",
+  "dependencies": {
+    "playwright": "^1.61.0",
+    "puppeteer-core": "^24.0.0"
+  },
+  "peerDependencies": {
+    "pptxgenjs": "^4.0.0",
+    "jszip": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

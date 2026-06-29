@@ -1,0 +1,1097 @@
+<p:sp xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" xmlns:p15="http://schemas.microsoft.com/office/powerpoint/2012/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <p:nvSpPr>
+    <p:cNvPr id="365" name="object 2"/>
+    <p:cNvSpPr/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="360" y="255240"/>
+      <a:ext cx="3483360" cy="6453720"/>
+    </a:xfrm>
+    <a:custGeom>
+      <a:avLst/>
+      <a:gdLst>
+        <a:gd name="textAreaLeft" fmla="*/ 0 w 3483360"/>
+        <a:gd name="textAreaRight" fmla="*/ 3483720 w 3483360"/>
+        <a:gd name="textAreaTop" fmla="*/ 0 h 6453720"/>
+        <a:gd name="textAreaBottom" fmla="*/ 6454080 h 6453720"/>
+      </a:gdLst>
+      <a:ahLst/>
+      <a:cxnLst/>
+      <a:rect l="textAreaLeft" t="textAreaTop" r="textAreaRight" b="textAreaBottom"/>
+      <a:pathLst>
+        <a:path w="5744210" h="10642600">
+          <a:moveTo>
+            <a:pt x="5743613" y="5574398"/>
+          </a:moveTo>
+          <a:lnTo>
+            <a:pt x="5743232" y="5528576"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5742152" y="5482729"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5740362" y="5436882"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5737885" y="5391023"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5734697" y="5345176"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5730799" y="5299341"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5726188" y="5253533"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5720854" y="5207749"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5714822" y="5162004"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5708066" y="5116296"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5700585" y="5070653"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5692381" y="5025060"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5683453" y="4979543"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5673788" y="4934102"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5663400" y="4888750"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5652274" y="4843475"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5640413" y="4798314"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5627814" y="4753254"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5614467" y="4708322"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5600382" y="4663503"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5585549" y="4618812"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5569966" y="4574273"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5553621" y="4529874"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5536527" y="4485627"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5518683" y="4441545"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5500078" y="4397641"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5480697" y="4353903"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5460568" y="4310367"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5438508" y="4264939"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5415775" y="4219994"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5392369" y="4175506"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5368302" y="4131513"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5343576" y="4087990"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5318201" y="4044962"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5292179" y="4002430"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5265521" y="3960406"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5238254" y="3918889"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5210353" y="3877881"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5181854" y="3837381"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5152745" y="3797414"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5123040" y="3757980"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5092751" y="3719080"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5061877" y="3680714"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5030432" y="3642906"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4998428" y="3605644"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4965878" y="3568941"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4932769" y="3532797"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4899114" y="3497224"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4864938" y="3462223"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4830229" y="3427806"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4794999" y="3393973"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4759274" y="3360737"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4723028" y="3328098"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4686300" y="3296056"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4649089" y="3264624"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4611395" y="3233801"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4573232" y="3203600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4534598" y="3174034"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4495520" y="3145078"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4455985" y="3116783"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4416018" y="3089110"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4375620" y="3062097"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4334789" y="3035731"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4293552" y="3010027"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4251896" y="2984982"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4209846" y="2960611"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4167403" y="2936913"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4124566" y="2913900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4081361" y="2891574"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4037787" y="2869933"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3993845" y="2848991"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3949547" y="2828760"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3904907" y="2809240"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3859923" y="2790431"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3814610" y="2772333"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3768979" y="2754973"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3723030" y="2738348"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3676764" y="2722448"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3630206" y="2707297"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3583355" y="2692895"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3536226" y="2679242"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3488817" y="2666365"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3441128" y="2654236"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3393186" y="2642882"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3344989" y="2632303"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3296551" y="2622512"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3247860" y="2613507"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3198952" y="2605290"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3149816" y="2597886"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3100476" y="2591270"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3095968" y="2590381"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3091421" y="2590381"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3086938" y="2589479"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3014459" y="2581465"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2982036" y="2578176"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2965094" y="2576855"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2967215" y="2540000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2968345" y="2489200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2968421" y="2438400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2967456" y="2387600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2965437" y="2336800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2962389" y="2286000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2958287" y="2247900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2953156" y="2197100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2946984" y="2146300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2939770" y="2095500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2931541" y="2044700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2922282" y="1993900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2911995" y="1955800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2900680" y="1905000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2888348" y="1854200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2875000" y="1803400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2860624" y="1765300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2845244" y="1714500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2828861" y="1663700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2811462" y="1612900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2793060" y="1574800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2773642" y="1524000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2753233" y="1473200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2731833" y="1435100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2709430" y="1384300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2686024" y="1346200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2661640" y="1295400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2638120" y="1257300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2613799" y="1206500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2588691" y="1168400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2562822" y="1130300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2536177" y="1092200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2508783" y="1054100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2480653" y="1003300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2451785" y="965200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2422207" y="927100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2391930" y="901700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2360955" y="863600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2329294" y="825500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2296960" y="787400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2263978" y="749300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2230336" y="723900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2196058" y="685800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2161159" y="660400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2125649" y="622300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2089531" y="596900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2052815" y="558800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2015528" y="533400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1977669" y="508000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1939264" y="469900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1860816" y="419100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1780273" y="368300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1697736" y="317500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1655749" y="304800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1527035" y="228600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1483258" y="215900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1439049" y="190500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1349438" y="165100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1304048" y="139700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="928446" y="38100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="880110" y="38100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="831494" y="25400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="782624" y="25400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="733501" y="12700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="684149" y="12700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="634568" y="0"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="229082" y="0"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="178358" y="12700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="127901" y="12700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="77749" y="25400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="27901" y="25400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="0" y="38100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="0" y="1803400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="27305" y="1790700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="75311" y="1790700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="173342" y="1765300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="370141" y="1765300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="404723" y="1778000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="441921" y="1778000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="481380" y="1790700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="522719" y="1803400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="565569" y="1816100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="654329" y="1841500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="789571" y="1917700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="833729" y="1955800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="876795" y="1993900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="918425" y="2032000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="958227" y="2082800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="995845" y="2133600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1025563" y="2184400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1052093" y="2222500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1075372" y="2273300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1095349" y="2324100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1111973" y="2374900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1125194" y="2413000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1134960" y="2463800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1141234" y="2514600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1143939" y="2552700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1161084" y="3530600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="1173734" y="4038600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2658948" y="3987800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2807030" y="3987800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2855823" y="4000500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="2904286" y="4000500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3000032" y="4025900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3047238" y="4025900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3093936" y="4038600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3140087" y="4064000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3230600" y="4089400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3274885" y="4114800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3318459" y="4127500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3361283" y="4152900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3403320" y="4178300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3444519" y="4203700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3484854" y="4229100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3524275" y="4254500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3562743" y="4292600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3600221" y="4318000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3636657" y="4356100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3672027" y="4394200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3706266" y="4419600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3739362" y="4457700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3771252" y="4495800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3801897" y="4533900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3831259" y="4572000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3859301" y="4622800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3885984" y="4660900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3909161" y="4699000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3930739" y="4737100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3950741" y="4787900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3969181" y="4826000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3986060" y="4864100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4001376" y="4914900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4015168" y="4953000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4027411" y="4991100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4038130" y="5041900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4047337" y="5080000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4055046" y="5130800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4061244" y="5168900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4065955" y="5219700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4069181" y="5257800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4070934" y="5308600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4071213" y="5346217"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4070070" y="5390921"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4067454" y="5435739"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4063415" y="5480494"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4057942" y="5525122"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4051046" y="5569623"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4042740" y="5613933"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4033024" y="5658028"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4021925" y="5701855"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4009428" y="5745404"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3995572" y="5788622"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3980332" y="5831484"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3963746" y="5873928"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3945801" y="5915952"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3926522" y="5957494"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3905897" y="5998515"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3883964" y="6039002"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3860698" y="6078906"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3836136" y="6118187"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3810279" y="6156807"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3783126" y="6194730"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3754704" y="6231941"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3724999" y="6268364"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3694036" y="6304000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3661816" y="6338786"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3628352" y="6372695"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3593655" y="6405702"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3557727" y="6437744"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3520579" y="6468808"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3482225" y="6498857"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3442665" y="6527838"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="687946" y="8464512"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="685558" y="8470087"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="0" y="7493000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="0" y="10073081"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="0" y="10642587"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="3853904" y="8470900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4146893" y="8305800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4231551" y="8255000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4314152" y="8204200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4354665" y="8166100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4434116" y="8115300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4511446" y="8064500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4549305" y="8026400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4586630" y="8001000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4623409" y="7975600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4659655" y="7937500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4695342" y="7912100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4730483" y="7874000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4765078" y="7848600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4799127" y="7810500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4832604" y="7772400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4865535" y="7747000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4897894" y="7708900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4929695" y="7670800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4960925" y="7645400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="4991595" y="7607300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5021681" y="7569200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5051209" y="7531100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5080139" y="7493000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5108511" y="7454900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5136286" y="7416800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5163477" y="7391400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5190083" y="7353300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5216106" y="7315200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5241531" y="7264400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5266360" y="7226300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5290591" y="7188200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5314226" y="7150100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5337264" y="7112000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5359692" y="7073900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5381498" y="7035800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5402707" y="6985000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5423306" y="6946900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5443283" y="6908800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5462638" y="6870700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5481383" y="6819900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5499493" y="6781800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5516994" y="6743700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5533847" y="6692900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5550078" y="6654800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5565686" y="6616700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5580646" y="6565900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5594959" y="6527800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5608650" y="6477000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5621680" y="6438900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5634075" y="6388100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5645810" y="6350000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5656910" y="6299200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5667337" y="6261100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5677116" y="6210300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5686234" y="6172200"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5694692" y="6121400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5702490" y="6083300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5709615" y="6032500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5716067" y="5994400"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5721858" y="5943600"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5726963" y="5905500"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5731395" y="5854700"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5735142" y="5803900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5738215" y="5765800"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5740590" y="5715000"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5742292" y="5676900"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5743295" y="5626100"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5743613" y="5575300"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5743600" y="5574931"/>
+          </a:lnTo>
+          <a:lnTo>
+            <a:pt x="5743613" y="5574398"/>
+          </a:lnTo>
+          <a:close/>
+        </a:path>
+      </a:pathLst>
+    </a:custGeom>
+    <a:solidFill>
+      <a:srgbClr val="F8A01B">
+        <a:alpha val="35000"/>
+      </a:srgbClr>
+    </a:solidFill>
+    <a:ln w="0">
+      <a:noFill/>
+    </a:ln>
+  </p:spPr>
+  <p:style>
+    <a:lnRef idx="0"/>
+    <a:fillRef idx="0"/>
+    <a:effectRef idx="0"/>
+    <a:fontRef idx="minor"/>
+  </p:style>
+  <p:txBody>
+    <a:bodyPr lIns="0" tIns="0" rIns="0" bIns="0" anchor="t">
+      <a:noAutofit/>
+    </a:bodyPr>
+    <a:p>
+      <a:endParaRPr lang="en-US" sz="1800" b="0" u="none" strike="noStrike">
+        <a:solidFill>
+          <a:srgbClr val="000000"/>
+        </a:solidFill>
+        <a:effectLst/>
+        <a:uFillTx/>
+        <a:latin typeface="Arial"/>
+      </a:endParaRPr>
+    </a:p>
+  </p:txBody>
+</p:sp>

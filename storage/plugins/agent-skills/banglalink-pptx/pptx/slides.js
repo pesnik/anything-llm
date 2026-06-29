@@ -112,9 +112,9 @@ function renderBulletSlide(slide, pptx, data) {
   if (data.subtitle) {
     slide.addText(data.subtitle, {
       x: l.marginX,
-      y: 0.75,
+      y: 0.78,
       w: l.contentW,
-      h: 0.35,
+      h: 0.3,
       fontSize: 13,
       color: c.darkGray,
       fontFace: brand.fonts.body,
@@ -122,7 +122,7 @@ function renderBulletSlide(slide, pptx, data) {
     });
   }
 
-  let contentY = l.subtitle ? 1.2 : 0.9;
+  let contentY = data.subtitle ? 1.15 : 0.9;
   shapes.addBulletList(slide, data.content || [], l.marginX, contentY, l.contentW, 4.2);
 
   shapes.addLogoIcon(slide, pptx);

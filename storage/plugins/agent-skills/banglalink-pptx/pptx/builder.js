@@ -3,10 +3,52 @@ const brand = require("../brand");
 const slides = require("./slides");
 const ghostLogo = require("./ghost-logo");
 
+// ── Slide Masters (reusable layout templates) ──
+function defineSlideMasters(pptx) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  // Content slide master: orange title + logo icon
+  pptx.defineSlideMaster({
+    title: "CONTENT_BULLET",
+    background: { color: c.white },
+    objects: [
+      // Logo icon top-right
+      ...(brand.logo.logoIcon ? [{
+        image: { data: brand.logo.logoIcon, x: l.logoIconLeft, y: l.logoIconTop, w: l.logoIconWidth, h: l.logoIconHeight },
+      }] : []),
+    ],
+  });
+
+  // Section break master: full orange bg
+  pptx.defineSlideMaster({
+    title: "SECTION_BREAK",
+    background: { color: c.swooshOrange },
+    objects: [
+      ...(brand.logo.logoFullWhite ? [{
+        image: { data: brand.logo.logoFullWhite, x: 5.417, y: 3.2, w: 2.5, h: 0.8 },
+      }] : []),
+    ],
+  });
+
+  // KPI slide master: white bg + logo
+  pptx.defineSlideMaster({
+    title: "CONTENT_KPI",
+    background: { color: c.white },
+    objects: [
+      ...(brand.logo.logoIcon ? [{
+        image: { data: brand.logo.logoIcon, x: l.logoIconLeft, y: l.logoIconTop, w: l.logoIconWidth, h: l.logoIconHeight },
+      }] : []),
+    ],
+  });
+}
+
 async function buildPresentation(sections, options) {
   const pptx = new PptxGenJS();
   pptx.defineLayout({ name: "BL_WIDESCREEN", width: brand.slideSize.width, height: brand.slideSize.height });
   pptx.layout = "BL_WIDESCREEN";
+
+  defineSlideMasters(pptx);
 
   const totalSlides = sections.reduce((sum, s) => sum + (s.slides ? s.slides.length : 1), 0);
   let slideNumber = 0;

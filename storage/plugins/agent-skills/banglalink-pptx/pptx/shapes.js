@@ -3,6 +3,54 @@ const themes = require("./themes");
 
 const ALLOWED_COLORS = new Set(Object.values(brand.colors));
 
+// ── Factory functions (prevents PptxGenJS object mutation corruption) ──
+function makeShadow(opts = {}) {
+  return {
+    type: opts.type || "outer",
+    color: opts.color || "000000",
+    blur: opts.blur ?? 6,
+    offset: opts.offset ?? 2,
+    angle: opts.angle ?? 135,
+    opacity: opts.opacity ?? 0.15,
+  };
+}
+
+function makeCardShadow() {
+  return makeShadow({ blur: 8, offset: 3, opacity: 0.12 });
+}
+
+function makeSubtleShadow() {
+  return makeShadow({ blur: 4, offset: 1, opacity: 0.08 });
+}
+
+function makeChartOpts(overrides = {}) {
+  const c = brand.colors;
+  return {
+    x: brand.contentSlide.marginX,
+    y: 1.8,
+    w: 9.5,
+    h: 5.0,
+    showLegend: true,
+    legendPos: "r",
+    legendFontSize: brand.fontSize.footnote,
+    showTitle: false,
+    chartColors: [c.swooshOrange, c.deepOrange, c.amber, c.primaryOrange, c.checkmarkAmber],
+    catAxisLabelFontSize: brand.fontSize.footnote,
+    valAxisLabelFontSize: brand.fontSize.footnote,
+    dataLabelFontSize: brand.fontSize.footnote,
+    dataLabelColor: c.nearBlack,
+    catAxisOrientation: "minMax",
+    valGridLine: { style: "dash", color: c.dividerGray, size: 0.5 },
+    ...overrides,
+  };
+}
+
+function makeTableOpts() {
+  return {
+    margin: [4, 8, 4, 8],
+  };
+}
+
 function assertBrandColor(hex) {
   const clean = hex.replace("#", "").toUpperCase();
   if (!ALLOWED_COLORS.has(clean)) {
@@ -180,6 +228,81 @@ function addAccentBar(slide, pptx, x, y, w, colorHex) {
   addBrandedRect(slide, pptx, x, y, w, 0.04, colorHex || brand.colors.primaryOrange);
 }
 
+// ── Icon generation (react-icons → PNG → base64) ──
+let _react, _ReactDOMServer, _sharp;
+async function _loadIconDeps() {
+  if (!_react) {
+    try {
+      _react = require("react");
+      _ReactDOMServer = require("react-dom/server");
+      _sharp = require("sharp");
+    } catch (e) {
+      return false;
+    }
+  }
+  return true;
+}
+
+async function generateIcon(IconComponent, color, size = 256) {
+  const loaded = await _loadIconDeps();
+  if (!loaded || !_react || !_ReactDOMServer || !_sharp) return null;
+
+  const svg = _ReactDOMServer.renderToStaticMarkup(
+    _react.createElement(IconComponent, { color: color || "#000000", size: String(size) })
+  );
+  const pngBuffer = await _sharp(Buffer.from(svg)).png().toBuffer();
+  return "image/png;base64," + pngBuffer.toString("base64");
+}
+
+function addIconSlide(slide, pptx, iconData, x, y, w, h) {
+  if (!iconData) return;
+  slide.addImage({ data: iconData, x, y, w, h });
+}
+
+// ── Visual motif: colored circle with icon ──
+function addIconCircle(slide, pptx, iconData, x, y, size, bgColor) {
+  const c = brand.colors;
+  slide.addShape(pptx.ShapeType.ellipse, {
+    x,
+    y,
+    w: size,
+    h: size,
+    fill: { color: bgColor || c.swooshOrange },
+  });
+  if (iconData) {
+    const padding = size * 0.2;
+    slide.addImage({ data: iconData, x: x + padding, y: y + padding, w: size - padding * 2, h: size - padding * 2 });
+  }
+}
+
+// ── Stat callout (big number + label) ──
+function addStatCallout(slide, value, label, x, y, w, opts = {}) {
+  const c = brand.colors;
+  slide.addText(value, {
+    x,
+    y,
+    w,
+    h: opts.valueHeight || 0.8,
+    fontSize: opts.valueFontSize || 48,
+    bold: true,
+    color: opts.valueColor || c.swooshOrange,
+    fontFace: brand.fonts.heading,
+    align: "center",
+    valign: "bottom",
+  });
+  slide.addText(label, {
+    x,
+    y: y + (opts.valueHeight || 0.8),
+    w,
+    h: opts.labelHeight || 0.4,
+    fontSize: opts.labelFontSize || brand.fontSize.caption,
+    color: opts.labelColor || c.midGray,
+    fontFace: brand.fonts.body,
+    align: "center",
+    valign: "top",
+  });
+}
+
 module.exports = {
   assertBrandColor,
   mapToBrand,
@@ -190,4 +313,13 @@ module.exports = {
   addLogoIcon,
   addLogoFull,
   addAccentBar,
+  makeShadow,
+  makeCardShadow,
+  makeSubtleShadow,
+  makeChartOpts,
+  makeTableOpts,
+  generateIcon,
+  addIconSlide,
+  addIconCircle,
+  addStatCallout,
 };

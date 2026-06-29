@@ -182,12 +182,22 @@ Your task is to research the given section topic using web search, then create s
 
 ## Layout Selection Rules
 1. NEVER use more than 2 bullet slides in a row — vary the layout
-2. If section has 3-6 key metrics → use "kpi"
-3. If section has time-based data → use "chart" (line)
-4. If section compares 2 things → use "two-column"
-5. If section has structured data → use "table"
-6. If section is a major transition → use "section-break" or "section-intro"
-7. If section has 3-4 items to showcase → use "image-cards"
+2. EVERY slide must have a visual element — chart, icon, KPI cards, image, or shape. Text-only slides are forbidden.
+3. If section has 3-6 key metrics → use "kpi" (big numbers + labels)
+4. If section has time-based data → use "chart" (line/bar) or "timeline"
+5. If section compares 2 things → use "two-column"
+6. If section has structured data → use "table"
+7. If section is a major transition → use "section-break" or "section-intro"
+8. If section has 3-4 items to showcase → use "image-cards"
+9. If section has a key stat to highlight → use "bullet-image" with the stat as a visual callout
+10. Default to "kpi" or "chart" over "bullet" — always prefer visual layouts
+
+## Visual Design Principles
+- Every slide needs a visual anchor: large stat callout, chart, icon grid, or image cards
+- Use color dominance: 60-70% white/light, 20% orange accent, 10% dark text
+- Typography hierarchy: titles 24pt+ bold, body 13-14pt, captions 10pt muted
+- Leave breathing room — don't fill every inch with text
+- Icons in colored circles next to headers add polish
 
 ## Brand Guidelines
 - Primary colors: Orange (#EF6E23 for headers), Amber (#FAA106 for accents)

@@ -6,38 +6,50 @@ function renderTitleSlide(slide, pptx, data) {
   const c = brand.colors;
   const t = brand.titleSlide;
 
-  slide.background = { color: c.primaryOrange };
+  slide.background = { color: c.white };
 
-  slide.addText(data.title || "Presentation", {
-    x: t.titleX,
-    y: t.titleY,
-    w: t.titleW,
-    h: t.titleH,
-    fontSize: brand.fontSize.heroTitle,
-    bold: true,
-    color: c.white,
-    fontFace: brand.fonts.heading,
-    align: "center",
-    valign: "bottom",
-  });
+  // Logo centered
+  const logo = brand.logo.logoFull;
+  if (logo) {
+    slide.addImage({
+      data: logo,
+      x: (brand.slideSize.width - t.logoFullWidth) / 2,
+      y: 1.5,
+      w: t.logoFullWidth,
+      h: t.logoFullHeight,
+    });
+  }
 
-  shapes.addAccentBar(slide, pptx, 5.167, 2.85, 3.0, c.amber);
-
-  if (data.subtitle) {
-    slide.addText(data.subtitle, {
-      x: t.subtitleX,
-      y: t.subtitleY,
-      w: t.subtitleW,
-      h: t.subtitleH,
-      fontSize: brand.fontSize.subtitle,
-      color: c.white,
-      fontFace: brand.fonts.body,
+  // Title below logo
+  if (data.title) {
+    slide.addText(data.title, {
+      x: 1.0,
+      y: 4.2,
+      w: 11.333,
+      h: 1.2,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.nearBlack,
+      fontFace: brand.fonts.heading,
       align: "center",
       valign: "top",
     });
   }
 
-  shapes.addLogoFull(slide);
+  // Subtitle
+  if (data.subtitle) {
+    slide.addText(data.subtitle, {
+      x: 1.0,
+      y: 5.4,
+      w: 11.333,
+      h: 0.8,
+      fontSize: brand.fontSize.body,
+      color: c.midGray,
+      fontFace: brand.fonts.body,
+      align: "center",
+      valign: "top",
+    });
+  }
 }
 
 function renderSectionSlide(slide, pptx, data) {
@@ -261,17 +273,17 @@ function renderQuoteSlide(slide, pptx, data) {
 function renderClosingSlide(slide, pptx, data) {
   const c = brand.colors;
 
-  slide.background = { color: c.dark };
+  slide.background = { color: c.white };
   slide._isClosing = true;
 
   slide.addText(data.cta || "Thank You", {
-    x: 1.0,
-    y: 2.0,
-    w: 11.333,
+    x: 3.0,
+    y: 3.0,
+    w: 7.0,
     h: 1.5,
     fontSize: 44,
     bold: true,
-    color: c.white,
+    color: c.nearBlack,
     fontFace: brand.fonts.heading,
     align: "center",
     valign: "middle",
@@ -279,19 +291,17 @@ function renderClosingSlide(slide, pptx, data) {
 
   if (data.contact) {
     slide.addText(data.contact, {
-      x: 1.0,
-      y: 3.8,
-      w: 11.333,
+      x: 3.0,
+      y: 4.5,
+      w: 7.0,
       h: 0.8,
       fontSize: brand.fontSize.body,
-      color: c.white,
+      color: c.midGray,
       fontFace: brand.fonts.body,
       align: "center",
       valign: "top",
     });
   }
-
-  shapes.addLogoFull(slide);
 }
 
 function renderKpiSlide(slide, pptx, data) {
@@ -633,8 +643,6 @@ function renderSectionBreakSlide(slide, pptx, data) {
       valign: "top",
     });
   }
-
-  shapes.addLogoFull(slide);
 }
 
 function renderSectionIntroSlide(slide, pptx, data) {

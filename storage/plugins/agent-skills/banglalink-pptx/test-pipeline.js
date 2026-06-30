@@ -325,7 +325,7 @@ async function runTest() {
 
   // Slide 1: title slide
   const e1 = await explicitZip.file(explicitSlideFiles[0]).async("string");
-  assert("Title slide has amber accent (FAA106)", e1.includes("FAA106"));
+  assert("Title slide has white background", e1.includes("FFFFFF"));
   assert("Title text on title slide", e1.includes("Test Deck"));
   assert("Subtitle on title slide", e1.includes("For QA"));
 
@@ -422,7 +422,7 @@ async function runTest() {
 
   // Check closing slide has dark background
   const clXml = await diverseZip.file(diverseSlideFiles[9]).async("string");
-  assert("Closing slide has dark bg", clXml.includes("1C1C1C"));
+  assert("Closing slide has white bg", clXml.includes("FFFFFF"));
 
   // ── Step 12: Extended layout types ───────────────────
   console.log("\n▶ 12. EXTENDED LAYOUT TYPES");

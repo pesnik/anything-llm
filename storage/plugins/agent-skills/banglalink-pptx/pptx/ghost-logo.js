@@ -18,24 +18,42 @@ async function injectGhostLogo(buffer, sections) {
 
   if (slideFiles.length === 0) return buffer;
 
-  const closingSlideFile = slideFiles[slideFiles.length - 1];
-  const slideXml = await zip.file(closingSlideFile).async("string");
+  // Find section-break slides and closing slide
+  const sectionBreakSlides = [];
+  let slideIdx = 0;
+  for (const section of sections) {
+    for (const slideData of (section.slides || [])) {
+      if (slideData.type === "section-break") {
+        sectionBreakSlides.push(slideIdx);
+      }
+      slideIdx++;
+    }
+  }
 
-  const spTreeMatch = slideXml.match(/<p:spTree[\s\S]*?<\/p:spTree>/);
-  if (!spTreeMatch) return buffer;
+  // Inject ghost logo into section-break slides and closing slide
+  const slidesToInject = [...sectionBreakSlides, slideFiles.length - 1];
+  const uniqueSlides = [...new Set(slidesToInject)];
 
-  const spTree = spTreeMatch[0];
-  const closeTag = "</p:spTree>";
-  const insertPos = spTree.lastIndexOf(closeTag);
+  for (const slideNum of uniqueSlides) {
+    if (slideNum >= slideFiles.length) continue;
+    const slideFile = slideFiles[slideNum];
+    const slideXml = await zip.file(slideFile).async("string");
 
-  if (insertPos === -1) return buffer;
+    const spTreeMatch = slideXml.match(/<p:spTree[\s\S]*?<\/p:spTree>/);
+    if (!spTreeMatch) continue;
 
-  const modifiedSpTree =
-    spTree.slice(0, insertPos) + "\n" + brand.ghostLogoXML + "\n" + spTree.slice(insertPos);
+    const spTree = spTreeMatch[0];
+    const closeTag = "</p:spTree>";
+    const insertPos = spTree.lastIndexOf(closeTag);
 
-  const modifiedSlideXml = slideXml.replace(spTree, modifiedSpTree);
+    if (insertPos === -1) continue;
 
-  zip.file(closingSlideFile, modifiedSlideXml);
+    const modifiedSpTree =
+      spTree.slice(0, insertPos) + "\n" + brand.ghostLogoXML + "\n" + spTree.slice(insertPos);
+
+    const modifiedSlideXml = slideXml.replace(spTree, modifiedSpTree);
+    zip.file(slideFile, modifiedSlideXml);
+  }
 
   const finalBuffer = await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" });
   return finalBuffer;

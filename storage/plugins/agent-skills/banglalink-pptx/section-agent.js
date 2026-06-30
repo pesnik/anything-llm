@@ -242,6 +242,36 @@ Quote with attribution.
 ### ClosingSlide(slide, { cta, contact })
 Thank You slide with ghost logo.
 
+### NumberedList(slide, pptx, { leftTitle, left, rightTitle, right, y })
+Two-column numbered items (01-09).
+
+### KPIWithHeadline(slide, pptx, { metrics, y, cardW, cardH })
+KPI cards with headline + big number + date.
+- metrics = [{ headline: "Revenue", value: "8.5B", date: "FY2025" }]
+
+### LargeImagePlaceholder(slide, pptx, { caption, y })
+Large orange-bordered rectangle + caption.
+
+### Dashboard(slide, pptx, { charts, y })
+2x2 grid of mini charts.
+- charts = [{ title: "Revenue Trend", data: [{ name: "Rev", labels: ["Q1","Q2"], values: [100,120] }] }]
+
+### CalendarTimeline(slide, pptx, { milestones, y })
+Timeline with calendar icons.
+- milestones = [{ label: "Phase 1", month: "Jan", details: "Discovery" }]
+
+### TableWithChecklist(slide, pptx, { headers, rows, notes, y })
+Table with checkmark column.
+
+### TablePieCombo(slide, pptx, { tables, pieData, pieTitle, y })
+Tables + pie chart side by side.
+
+### DashboardWithNotes(slide, pptx, { charts, notes, footer, y })
+Dashboard with notes and footer.
+
+### ClosingSlideWhite(slide, { cta })
+Thank You slide on white bg.
+
 ## How to Write Slide Code
 
 Example for a section with market share data:
@@ -288,6 +318,14 @@ LogoIcon(slide);
 9. If section has a key stat → use StatCallout
 10. Default to KPICards or chart over bullets — always prefer visual layouts
 
+## Layout Variety Enforcement (CRITICAL)
+- NEVER repeat the same layout type for consecutive slides
+- Track which layouts you've used and alternate
+- If you used KPICards for slide 1, use TwoColumn or Timeline for slide 2
+- If you used TwoColumn for slide 2, use KPICards or chart for slide 3
+- Available layouts: bullet, kpi, two-column, timeline, image-cards, chart, table, quote, section-break, section-intro, numbered-list, kpi-headline, large-image, dashboard, calendar-timeline
+- Aim for 3-4 different layouts per presentation
+
 ## Visual Design Principles
 - Every slide needs a visual anchor: KPICards, chart, TwoColumn, Timeline, or ImageCards
 - Use color dominance: 60-70% white, 20% orange accent, 10% dark text
@@ -308,6 +346,22 @@ LogoIcon(slide);
 - Only use Arial font family
 - Keep bullet text concise (6-8 max per slide)
 - Professional tone suitable for telecom executive audience
+
+## Smart Quote Handling
+- When adding text with quotes, use XML entities for curly quotes:
+  - Left double quote: &#x201C;
+  - Right double quote: &#x201D;
+  - Left single quote: &#x2018;
+  - Right single quote: &#x2019;
+- Example: the &#x201C;Agreement&#x201D;
+
+## Common Pitfalls to Avoid
+- NEVER use "#" prefix with hex colors (causes file corruption)
+- NEVER encode opacity in hex color strings (use opacity property)
+- NEVER use unicode bullets (use bullet: true)
+- Use breakLine: true between array items
+- Don't reuse option objects across calls (PptxGenJS mutates them)
+- Don't use ROUNDED_RECTANGLE with accent borders
 
 Section context:
 ${section.description ? `Description: ${section.description}` : ""}

@@ -251,6 +251,28 @@ function addLogo(slide, { position = "top-right" }) {
   slide.addImage({ data: logo, ...pos });
 }
 
+// ── Smart quote handling ──
+const smartQuotes = {
+  "\u201C": "&#x201C;", // left double quote
+  "\u201D": "&#x201D;", // right double quote
+  "\u2018": "&#x2018;", // left single quote
+  "\u2019": "&#x2019;", // right single quote
+};
+
+function escapeSmartQuotes(text) {
+  if (typeof text !== "string") return text;
+  return text.replace(/[\u2018\u2019\u201C\u201D]/g, (ch) => smartQuotes[ch] || ch);
+}
+
+function unescapeSmartQuotes(text) {
+  if (typeof text !== "string") return text;
+  return text
+    .replace(/&#x201C;/g, "\u201C")
+    .replace(/&#x201D;/g, "\u201D")
+    .replace(/&#x2018;/g, "\u2018")
+    .replace(/&#x2019;/g, "\u2019");
+}
+
 // ── Export all primitives ──
 module.exports = {
   colors,
@@ -274,6 +296,10 @@ module.exports = {
   
   // Brand primitives
   addLogo,
+  
+  // Smart quote helpers
+  escapeSmartQuotes,
+  unescapeSmartQuotes,
   
   // Raw access to pptxgenjs
   raw: {

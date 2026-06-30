@@ -137,17 +137,17 @@ function renderTwoColumnSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.marginY,
+      y: 0.22,
       w: l.contentW,
-      h: 0.65,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
-      color: c.nearBlack,
+      color: c.swooshOrange,
       fontFace: brand.fonts.heading,
-      valign: "bottom",
+      valign: "top",
     });
 
-    shapes.addAccentBar(slide, pptx, l.marginX, 1.15, 1.5, c.primaryOrange);
+    shapes.addAccentBar(slide, pptx, l.marginX, 0.78, 1.5, c.primaryOrange);
   }
 
   const colY = 1.5;
@@ -190,17 +190,17 @@ function renderTableSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.marginY,
+      y: 0.22,
       w: l.contentW,
-      h: 0.65,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
-      color: c.nearBlack,
+      color: c.swooshOrange,
       fontFace: brand.fonts.heading,
-      valign: "bottom",
+      valign: "top",
     });
 
-    shapes.addAccentBar(slide, pptx, l.marginX, 1.15, 1.5, c.primaryOrange);
+    shapes.addAccentBar(slide, pptx, l.marginX, 0.78, 1.5, c.primaryOrange);
   }
 
   shapes.addBrandedTable(
@@ -384,14 +384,14 @@ function renderImageCardsSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.marginY,
+      y: 0.22,
       w: l.contentW,
-      h: 0.65,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
-      valign: "bottom",
+      valign: "top",
     });
   }
 
@@ -438,21 +438,21 @@ function renderChartSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.marginY,
+      y: 0.22,
       w: l.contentW,
-      h: 0.65,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
-      valign: "bottom",
+      valign: "top",
     });
   }
 
   if (data.chartTitle) {
     slide.addText(data.chartTitle, {
       x: l.marginX,
-      y: 1.3,
+      y: 0.9,
       w: l.contentW,
       h: 0.4,
       fontSize: brand.fontSize.body,
@@ -482,7 +482,6 @@ function renderChartSlide(slide, pptx, data) {
       valAxisLabelFontSize: brand.fontSize.footnote,
       dataLabelFontSize: brand.fontSize.footnote,
       dataLabelColor: c.nearBlack,
-      catAxisOrientation: "minMax",
       valGridLine: { style: "dash", color: c.dividerGray, size: 0.5 },
     };
 

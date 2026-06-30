@@ -33,7 +33,7 @@ console.log(`  Input: ${input}\n`);
 console.log("  1. Extracting text (markitdown)...");
 let text;
 try {
-  text = execSync(`python -m markitdown "${input}"`, {
+  text = execSync(`python3 -m markitdown "${input}"`, {
     encoding: "utf-8",
     timeout: 30000,
   });

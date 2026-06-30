@@ -32,7 +32,8 @@ if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
 }
 
-const pdfPath = path.join(outDir, "slides.pdf");
+const pdfName = path.basename(input, path.extname(input)) + ".pdf";
+const pdfPath = path.join(outDir, pdfName);
 const imgPrefix = path.join(outDir, "slide");
 
 console.log(`\n  Visual QA Pipeline`);

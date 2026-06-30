@@ -481,6 +481,94 @@ async function runTest() {
   const calXml = await extendedZip.file(extendedSlideFiles[5]).async("string");
   assert("Calendar-timeline has month labels", calXml.includes("Jan"));
 
+  // ── Step 13: Tutorial section coverage ─────────────────
+  console.log("\n▶ 13. TUTORIAL SECTION COVERAGE");
+  const tutorialSections = [
+    // 1. Setup & Basic Structure
+    { title: "Setup", slides: [{ type: "title", title: "PptxGenJS Tutorial", subtitle: "Setup & Basic Structure" }] },
+    // 2. Layout Dimensions (LAYOUT_WIDE = 13.3" × 7.5")
+    { title: "Layout", slides: [{ type: "section-intro", title: "Layout Dimensions", subtitle: "13.3 × 7.5 inches" }] },
+    // 3. Text & Formatting (charSpacing, margin: 0, breakLine, rich text)
+    { title: "Text", slides: [{ type: "bullet", title: "Text Formatting", content: ["charSpacing: 6", "margin: 0 for alignment", "breakLine: true between items"] }] },
+    // 4. Lists & Bullets (bullet: true, numbered, indentLevel)
+    { title: "Bullets", slides: [{ type: "bullet", title: "Bullets & Lists", content: ["Checkmark bullets", "Numbered lists", "Sub-items with indentLevel"] }] },
+    // 5. Shapes (RECTANGLE, OVAL, LINE, shadow, transparency)
+    { title: "Shapes", slides: [{ type: "two-column", title: "Shapes & Shadows",
+      leftContent: ["Rectangle + Shadow", "Oval with fill", "Dashed line"],
+      rightContent: ["Rounded rect", "50% transparent", "Upward shadow angle:270"] }] },
+    // 6. Images (base64, sizing modes, rotate)
+    { title: "Images", slides: [{ type: "image-cards", title: "Images & Icons",
+      cards: [{ caption: "Logo base64" }, { caption: "sizing: contain" }, { caption: "rotate: 15" }] }] },
+    // 7. Icons (react-icons → sharp → base64 PNG)
+    { title: "Icons", slides: [{ type: "kpi", title: "Icon Pipeline",
+      kpis: [{ label: "react-icons", value: "SVG", sublabel: "Step 1" },
+             { label: "sharp", value: "PNG", sublabel: "Step 2" },
+             { label: "base64", value: "Data", sublabel: "Step 3" }] }] },
+    // 8. Slide Backgrounds (solid, transparency, gradient)
+    { title: "Backgrounds", slides: [{ type: "section-break", title: "Slide Backgrounds" }] },
+    // 9. Tables (styled headers, colW, border)
+    { title: "Tables", slides: [{ type: "table", title: "Tables",
+      headers: ["Feature", "Status"], rows: [["Styled headers", "✓"], ["colW widths", "✓"], ["Border colors", "✓"]] }] },
+    // 10. Charts (all 8 types: BAR, LINE, PIE, DOUGHNUT, AREA, RADAR, SCATTER, BAR3D)
+    { title: "Charts", slides: [{ type: "chart", title: "Charts",
+      chartType: "bar", chartData: [{ name: "FY2024", labels: ["Q1","Q2","Q3","Q4"], values: [100,120,110,130] }] }] },
+    // 11. Slide Masters (defineSlideMaster with objects[])
+    { title: "Masters", slides: [{ type: "section-intro", title: "Slide Masters", subtitle: "defineSlideMaster with objects[]" }] },
+    // 12. Common Pitfalls (makeShadow, breakLine, no #, no unicode bullets)
+    { title: "Pitfalls", slides: [{ type: "bullet", title: "Common Pitfalls",
+      content: ["makeShadow() fresh object each call", "breakLine: true between items", "No # prefix on hex colors", "bullet: true not unicode"] }] },
+    // Closing
+    { title: "End", slides: [{ type: "closing", cta: "Thank You", contact: "Tutorial Complete" }] },
+  ];
+
+  const tutorialBuffer = await builder.buildPresentation(tutorialSections, { theme: "dark" });
+  const tutorialZip = await JSZip.loadAsync(tutorialBuffer);
+  const tutorialSlideFiles = naturalSortSlideFiles(
+    Object.keys(tutorialZip.files).filter((name) => /^ppt\/slides\/slide\d+\.xml$/.test(name))
+  );
+
+  assert("13 tutorial slides generated", tutorialSlideFiles.length === 13, `got ${tutorialSlideFiles.length}`);
+
+  // Collect all text from all slides (builder reorders slides)
+  const allTutorialTexts = [];
+  for (const sf of tutorialSlideFiles) {
+    const xml = await tutorialZip.file(sf).async("string");
+    const texts = (xml.match(/<a:t[^>]*>([^<]*)<\/a:t>/g) || [])
+      .map(t => t.replace(/<[^>]*>/g, ""))
+      .map(decodeXmlEntities);
+    allTutorialTexts.push(...texts);
+  }
+  const combinedText = allTutorialTexts.join(" ");
+
+  // Verify each tutorial section has content somewhere in the presentation
+  const tutorialChecks = [
+    { text: "PptxGenJS Tutorial", label: "1. Setup slide" },
+    { text: "Layout Dimensions", label: "2. Layout Dimensions slide" },
+    { text: "Text Formatting", label: "3. Text & Formatting slide" },
+    { text: "Bullets & Lists", label: "4. Lists & Bullets slide" },
+    { text: "Shapes & Shadows", label: "5. Shapes slide" },
+    { text: "Images & Icons", label: "6. Images slide" },
+    { text: "Icon Pipeline", label: "7. Icons slide" },
+    { text: "Slide Backgrounds", label: "8. Slide Backgrounds slide" },
+    { text: "Tables", label: "9. Tables slide" },
+    { text: "Charts", label: "10. Charts slide" },
+    { text: "Slide Masters", label: "11. Slide Masters slide" },
+    { text: "Common Pitfalls", label: "12. Common Pitfalls slide" },
+  ];
+
+  for (const check of tutorialChecks) {
+    assert(check.label, combinedText.includes(check.text));
+  }
+
+  // Verify branding across all tutorial slides
+  const allTutorialXml = [];
+  for (const sf of tutorialSlideFiles) {
+    allTutorialXml.push(await tutorialZip.file(sf).async("string"));
+  }
+  const combinedTutorialXml = allTutorialXml.join(" ");
+  assert("Arial font in tutorial slides", combinedTutorialXml.includes("Arial"));
+  assert("Orange color in tutorial slides", combinedTutorialXml.includes("EF6E23"));
+
   // ── Summary ─────────────────────────────────────────
   const total = passed + failed;
   console.log("\n═════════════════════════════════════════════════════════");

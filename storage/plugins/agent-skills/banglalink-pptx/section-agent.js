@@ -52,7 +52,8 @@ async function spawnSectionAgent(section, parentHandler) {
                 enum: [
                   "title", "section", "bullet", "two-column", "table", "quote", "closing",
                   "kpi", "image-cards", "chart", "timeline", "bullet-image",
-                  "section-break", "section-intro"
+                  "section-break", "section-intro", "numbered-list", "kpi-headline",
+                  "large-image", "dashboard", "calendar-timeline"
                 ],
               },
               title: { type: "string" },
@@ -95,7 +96,7 @@ async function spawnSectionAgent(section, parentHandler) {
               },
               chartType: {
                 type: "string",
-                enum: ["line", "bar", "pie", "doughnut"],
+                enum: ["line", "bar", "pie", "doughnut", "area", "radar", "scatter", "bar3d"],
               },
               chartData: {
                 type: "array",
@@ -331,7 +332,7 @@ LogoIcon(slide);
 - Track which layouts you've used and alternate
 - If you used KPICards for slide 1, use TwoColumn or Timeline for slide 2
 - If you used TwoColumn for slide 2, use KPICards or chart for slide 3
-- Available layouts: bullet, kpi, two-column, timeline, image-cards, chart, table, quote, section-break, section-intro, numbered-list, kpi-headline, large-image, dashboard, calendar-timeline
+- Available layouts: bullet, kpi, two-column, timeline, image-cards, chart, table, quote, section-break, section-intro, numbered-list, kpi-headline, large-image, dashboard, calendar-timeline, bullet-image
 - Aim for 3-4 different layouts per presentation
 
 ## Visual Design Principles

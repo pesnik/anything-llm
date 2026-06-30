@@ -716,7 +716,7 @@ function renderNumberedListSlide(slide, pptx, data) {
         h: 0.4,
         fontSize: 14,
         bold: true,
-        color: c.orange,
+        color: c.swooshOrange,
         fontFace: brand.fonts.heading,
       });
       slide.addText(item, {
@@ -781,7 +781,7 @@ function renderKPIHeadlineSlide(slide, pptx, data) {
         w: cardW,
         h: cardH,
         fill: { color: c.white },
-        line: { color: c.orange, width: 1 },
+        line: { color: c.swooshOrange, width: 1 },
       });
 
       // Headline
@@ -806,7 +806,7 @@ function renderKPIHeadlineSlide(slide, pptx, data) {
         h: 1.0,
         fontSize: 48,
         bold: true,
-        color: c.orange,
+        color: c.swooshOrange,
         fontFace: brand.fonts.heading,
         align: "center",
         valign: "middle",
@@ -820,7 +820,7 @@ function renderKPIHeadlineSlide(slide, pptx, data) {
           w: cardW - 0.4,
           h: 0.4,
           fontSize: 12,
-          color: c.orange,
+          color: c.swooshOrange,
           fontFace: brand.fonts.body,
           align: "center",
           valign: "bottom",
@@ -862,7 +862,7 @@ function renderLargeImageSlide(slide, pptx, data) {
     w: 10.0,
     h: 4.5,
     fill: { color: c.white },
-    line: { color: c.orange, width: 1 },
+    line: { color: c.swooshOrange, width: 1 },
   });
 
   // Caption below
@@ -959,6 +959,7 @@ function renderDashboardSlide(slide, pptx, data) {
       // Mini chart
       if (ch.data) {
         const chartType = ch.type || "bar";
+        const chartColors = [c.swooshOrange, c.deepOrange, c.amber, c.primaryOrange, c.checkmarkAmber];
         slide.addChart(pptx.ChartType[chartType] || pptx.ChartType.bar, ch.data, {
           x: x + 0.2,
           y: y + 0.7,
@@ -966,6 +967,10 @@ function renderDashboardSlide(slide, pptx, data) {
           h: cellH - 0.9,
           showLegend: false,
           showTitle: false,
+          chartColors: chartColors,
+          catAxisLabelFontSize: 8,
+          valAxisLabelFontSize: 8,
+          dataLabelFontSize: 8,
         });
       }
     }
@@ -1016,7 +1021,7 @@ function renderCalendarTimelineSlide(slide, pptx, data) {
         y: startY,
         w: colW - 0.7,
         h: 0.15,
-        fill: { color: c.orange },
+        fill: { color: c.swooshOrange },
       });
       slide.addShape(pptx.ShapeType.rect, {
         x: x + 0.3,

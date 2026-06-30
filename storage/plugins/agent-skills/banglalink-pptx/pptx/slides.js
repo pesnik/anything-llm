@@ -676,6 +676,407 @@ function renderSectionIntroSlide(slide, pptx, data) {
   shapes.addLogoIcon(slide, pptx);
 }
 
+// ── Numbered List Slide ──
+function renderNumberedListSlide(slide, pptx, data) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  slide.background = { color: c.white };
+
+  // Title
+  if (data.title) {
+    slide.addText(data.title, {
+      x: l.marginX,
+      y: l.headerY,
+      w: l.contentW,
+      h: l.headerH,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.swooshOrange,
+      fontFace: brand.fonts.heading,
+      align: "left",
+      valign: "bottom",
+    });
+  }
+
+  // Two columns with numbered items
+  const colW = (l.contentW - 0.5) / 2;
+  const leftX = l.marginX;
+  const rightX = l.marginX + colW + 0.5;
+  const startY = l.headerY + l.headerH + 0.5;
+
+  const renderColumn = (items, x) => {
+    if (!items) return;
+    items.forEach((item, i) => {
+      const num = String(i + 1).padStart(2, "0");
+      slide.addText(num, {
+        x,
+        y: startY + i * 0.5,
+        w: 0.5,
+        h: 0.4,
+        fontSize: 14,
+        bold: true,
+        color: c.orange,
+        fontFace: brand.fonts.heading,
+      });
+      slide.addText(item, {
+        x: x + 0.55,
+        y: startY + i * 0.5,
+        w: colW - 0.6,
+        h: 0.4,
+        fontSize: 13,
+        color: c.nearBlack,
+        fontFace: brand.fonts.body,
+      });
+    });
+  };
+
+  renderColumn(data.left, leftX);
+  renderColumn(data.right, rightX);
+
+  shapes.addLogoIcon(slide, pptx);
+}
+
+// ── KPI with Headline Slide ──
+function renderKPIHeadlineSlide(slide, pptx, data) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  slide.background = { color: c.white };
+
+  // Title
+  if (data.title) {
+    slide.addText(data.title, {
+      x: l.marginX,
+      y: l.headerY,
+      w: l.contentW,
+      h: l.headerH,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.swooshOrange,
+      fontFace: brand.fonts.heading,
+      align: "left",
+      valign: "bottom",
+    });
+  }
+
+  // KPI cards
+  if (data.metrics && data.metrics.length > 0) {
+    const count = Math.min(data.metrics.length, 4);
+    const cardW = 2.8;
+    const cardH = 2.8;
+    const gap = 0.4;
+    const totalW = cardW * count + gap * (count - 1);
+    const startX = (l.contentW - totalW) / 2 + l.marginX;
+    const startY = l.headerY + l.headerH + 0.5;
+
+    for (let i = 0; i < count; i++) {
+      const m = data.metrics[i];
+      const x = startX + i * (cardW + gap);
+
+      // Card background
+      slide.addShape(pptx.ShapeType.rect, {
+        x,
+        y: startY,
+        w: cardW,
+        h: cardH,
+        fill: { color: c.white },
+        line: { color: c.orange, width: 1 },
+      });
+
+      // Headline
+      slide.addText(m.headline || m.label || "", {
+        x: x + 0.2,
+        y: startY + 0.2,
+        w: cardW - 0.4,
+        h: 0.8,
+        fontSize: 14,
+        bold: true,
+        color: c.nearBlack,
+        fontFace: brand.fonts.body,
+        align: "center",
+        valign: "top",
+      });
+
+      // Big number
+      slide.addText(m.value || "", {
+        x: x + 0.2,
+        y: startY + 1.0,
+        w: cardW - 0.4,
+        h: 1.0,
+        fontSize: 48,
+        bold: true,
+        color: c.orange,
+        fontFace: brand.fonts.heading,
+        align: "center",
+        valign: "middle",
+      });
+
+      // Date
+      if (m.date) {
+        slide.addText(m.date, {
+          x: x + 0.2,
+          y: startY + cardH - 0.5,
+          w: cardW - 0.4,
+          h: 0.4,
+          fontSize: 12,
+          color: c.orange,
+          fontFace: brand.fonts.body,
+          align: "center",
+          valign: "bottom",
+        });
+      }
+    }
+  }
+
+  shapes.addLogoIcon(slide, pptx);
+}
+
+// ── Large Image Placeholder Slide ──
+function renderLargeImageSlide(slide, pptx, data) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  slide.background = { color: c.white };
+
+  // Title
+  if (data.title) {
+    slide.addText(data.title, {
+      x: l.marginX,
+      y: l.headerY,
+      w: l.contentW,
+      h: l.headerH,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.swooshOrange,
+      fontFace: brand.fonts.heading,
+      align: "left",
+      valign: "bottom",
+    });
+  }
+
+  // Large orange-bordered rectangle
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 1.5,
+    y: l.headerY + l.headerH + 0.3,
+    w: 10.0,
+    h: 4.5,
+    fill: { color: c.white },
+    line: { color: c.orange, width: 1 },
+  });
+
+  // Caption below
+  if (data.caption) {
+    slide.addText(data.caption, {
+      x: 1.5,
+      y: l.headerY + l.headerH + 5.0,
+      w: 10.0,
+      h: 0.8,
+      fontSize: 13,
+      color: c.nearBlack,
+      fontFace: brand.fonts.body,
+      wrap: true,
+    });
+  }
+
+  shapes.addLogoIcon(slide, pptx);
+}
+
+// ── Dashboard Slide (2x2 mini charts) ──
+function renderDashboardSlide(slide, pptx, data) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  slide.background = { color: c.white };
+
+  // Title
+  if (data.title) {
+    slide.addText(data.title, {
+      x: l.marginX,
+      y: l.headerY,
+      w: l.contentW,
+      h: l.headerH,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.swooshOrange,
+      fontFace: brand.fonts.heading,
+      align: "left",
+      valign: "bottom",
+    });
+  }
+
+  // Dashboard charts
+  if (data.charts && data.charts.length > 0) {
+    const count = Math.min(data.charts.length, 4);
+    const cellW = (l.contentW - 0.3) / 2;
+    const cellH = 2.8;
+    const startY = l.headerY + l.headerH + 0.3;
+
+    for (let i = 0; i < count; i++) {
+      const ch = data.charts[i];
+      const col = i % 2;
+      const row = Math.floor(i / 2);
+      const x = l.marginX + col * (cellW + 0.3);
+      const y = startY + row * (cellH + 0.3);
+
+      // Cell background
+      slide.addShape(pptx.ShapeType.rect, {
+        x,
+        y,
+        w: cellW,
+        h: cellH,
+        fill: { color: c.white },
+        line: { color: c.divider, width: 0.5 },
+      });
+
+      // Chart title
+      if (ch.title) {
+        slide.addText(ch.title, {
+          x: x + 0.2,
+          y: y + 0.1,
+          w: cellW - 0.4,
+          h: 0.4,
+          fontSize: 11,
+          bold: true,
+          color: c.nearBlack,
+          fontFace: brand.fonts.body,
+        });
+      }
+
+      // Chart subtitle
+      if (ch.subtitle) {
+        slide.addText(ch.subtitle, {
+          x: x + 0.2,
+          y: y + 0.4,
+          w: cellW - 0.4,
+          h: 0.3,
+          fontSize: 9,
+          color: c.midGray,
+          fontFace: brand.fonts.body,
+        });
+      }
+
+      // Mini chart
+      if (ch.data) {
+        const chartType = ch.type || "bar";
+        slide.addChart(pptx.ChartType[chartType] || pptx.ChartType.bar, ch.data, {
+          x: x + 0.2,
+          y: y + 0.7,
+          w: cellW - 0.4,
+          h: cellH - 0.9,
+          showLegend: false,
+          showTitle: false,
+        });
+      }
+    }
+  }
+
+  shapes.addLogoIcon(slide, pptx);
+}
+
+// ── Calendar Timeline Slide ──
+function renderCalendarTimelineSlide(slide, pptx, data) {
+  const c = brand.colors;
+  const l = brand.contentSlide;
+
+  slide.background = { color: c.white };
+
+  // Title
+  if (data.title) {
+    slide.addText(data.title, {
+      x: l.marginX,
+      y: l.headerY,
+      w: l.contentW,
+      h: l.headerH,
+      fontSize: brand.fontSize.slideTitle,
+      bold: true,
+      color: c.swooshOrange,
+      fontFace: brand.fonts.heading,
+      align: "left",
+      valign: "bottom",
+    });
+  }
+
+  // Calendar timeline
+  if (data.milestones && data.milestones.length > 0) {
+    const count = Math.min(data.milestones.length, 6);
+    const colW = 1.7;
+    const colGap = 0.15;
+    const totalW = colW * count + colGap * (count - 1);
+    const startX = (l.contentW - totalW) / 2 + l.marginX;
+    const startY = l.headerY + l.headerH + 0.5;
+
+    for (let i = 0; i < count; i++) {
+      const m = data.milestones[i];
+      const x = startX + i * (colW + colGap);
+
+      // Calendar icon (simplified: orange top bar + white box)
+      slide.addShape(pptx.ShapeType.rect, {
+        x: x + 0.35,
+        y: startY,
+        w: colW - 0.7,
+        h: 0.15,
+        fill: { color: c.orange },
+      });
+      slide.addShape(pptx.ShapeType.rect, {
+        x: x + 0.3,
+        y: startY + 0.15,
+        w: colW - 0.6,
+        h: 0.8,
+        fill: { color: c.white },
+        line: { color: c.divider, width: 0.5 },
+      });
+      slide.addText(m.label || "", {
+        x: x + 0.3,
+        y: startY + 0.15,
+        w: colW - 0.6,
+        h: 0.8,
+        fontSize: 14,
+        bold: true,
+        color: c.nearBlack,
+        fontFace: brand.fonts.body,
+        align: "center",
+        valign: "middle",
+      });
+
+      // Details card (gradient gray)
+      const grayShade = Math.floor(200 + (i / count) * 40);
+      const grayHex = grayShade.toString(16).padStart(2, "0");
+      slide.addShape(pptx.ShapeType.rect, {
+        x,
+        y: startY + 1.1,
+        w: colW,
+        h: 4.5,
+        fill: { color: grayHex + grayHex + grayHex },
+      });
+
+      // Month + details
+      slide.addText(m.month || m.label || "", {
+        x: x + 0.15,
+        y: startY + 1.2,
+        w: colW - 0.3,
+        h: 0.4,
+        fontSize: 12,
+        bold: true,
+        color: c.nearBlack,
+        fontFace: brand.fonts.body,
+      });
+      slide.addText(m.details || m.desc || "", {
+        x: x + 0.15,
+        y: startY + 1.6,
+        w: colW - 0.3,
+        h: 3.8,
+        fontSize: 11,
+        color: c.nearBlack,
+        fontFace: brand.fonts.body,
+        wrap: true,
+      });
+    }
+  }
+
+  shapes.addLogoIcon(slide, pptx);
+}
+
 module.exports = {
   renderTitleSlide,
   renderSectionSlide,
@@ -691,4 +1092,9 @@ module.exports = {
   renderBulletImageSlide,
   renderSectionBreakSlide,
   renderSectionIntroSlide,
+  renderNumberedListSlide,
+  renderKPIHeadlineSlide,
+  renderLargeImageSlide,
+  renderDashboardSlide,
+  renderCalendarTimelineSlide,
 };

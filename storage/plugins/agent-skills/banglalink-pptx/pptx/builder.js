@@ -107,6 +107,21 @@ async function buildPresentation(sections, options) {
         case "section-intro":
           slides.renderSectionIntroSlide(slide, pptx, data);
           break;
+        case "numbered-list":
+          slides.renderNumberedListSlide(slide, pptx, data);
+          break;
+        case "kpi-headline":
+          slides.renderKPIHeadlineSlide(slide, pptx, data);
+          break;
+        case "large-image":
+          slides.renderLargeImageSlide(slide, pptx, data);
+          break;
+        case "dashboard":
+          slides.renderDashboardSlide(slide, pptx, data);
+          break;
+        case "calendar-timeline":
+          slides.renderCalendarTimelineSlide(slide, pptx, data);
+          break;
         default:
           slides.renderBulletSlide(slide, pptx, data);
           break;

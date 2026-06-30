@@ -424,6 +424,63 @@ async function runTest() {
   const clXml = await diverseZip.file(diverseSlideFiles[9]).async("string");
   assert("Closing slide has dark bg", clXml.includes("1C1C1C"));
 
+  // ── Step 12: Extended layout types ───────────────────
+  console.log("\n▶ 12. EXTENDED LAYOUT TYPES");
+  const extendedSections = [
+    { title: "Opening", slides: [{ type: "title", title: "Extended Test", subtitle: "Component test" }] },
+    { title: "Numbered", slides: [{ type: "numbered-list", title: "Key Features",
+      left: ["Feature one", "Feature two", "Feature three"],
+      right: ["Benefit one", "Benefit two", "Benefit three"] }] },
+    { title: "KPI Headline", slides: [{ type: "kpi-headline", title: "KPI Dashboard",
+      metrics: [
+        { headline: "Revenue", value: "8.5B", date: "FY2025" },
+        { headline: "Subscribers", value: "45M", date: "Q4" },
+        { headline: "ARPU", value: "Tk185", date: "YoY" },
+      ] }] },
+    { title: "Large Image", slides: [{ type: "large-image", title: "Product Demo", caption: "Banglalink 5G coverage map" }] },
+    { title: "Dashboard", slides: [{ type: "dashboard", title: "Analytics Overview",
+      charts: [
+        { title: "Revenue Trend", data: [{ name: "Rev", labels: ["Q1","Q2","Q3","Q4"], values: [100,120,110,130] }] },
+        { title: "Subscriber Growth", data: [{ name: "Sub", labels: ["Q1","Q2","Q3","Q4"], values: [1000,1100,1200,1300] }] },
+      ] }] },
+    { title: "Calendar", slides: [{ type: "calendar-timeline", title: "Implementation Plan",
+      milestones: [
+        { label: "Phase 1", month: "Jan", details: "Discovery and planning" },
+        { label: "Phase 2", month: "Mar", details: "Development kickoff" },
+        { label: "Phase 3", month: "Jun", details: "Launch" },
+      ] }] },
+    { title: "Closing", slides: [{ type: "closing", cta: "Thank You", contact: "Extended Test Team" }] },
+  ];
+
+  const extendedBuffer = await builder.buildPresentation(extendedSections, { theme: "dark" });
+  const extendedZip = await JSZip.loadAsync(extendedBuffer);
+  const extendedSlideFiles = naturalSortSlideFiles(
+    Object.keys(extendedZip.files).filter((name) => /^ppt\/slides\/slide\d+\.xml$/.test(name))
+  );
+
+  assert("7 extended slides generated", extendedSlideFiles.length === 7, `got ${extendedSlideFiles.length}`);
+
+  // Check numbered-list slide
+  const nlXml = await extendedZip.file(extendedSlideFiles[1]).async("string");
+  assert("Numbered-list slide has numbered items", nlXml.includes("Feature one"));
+
+  // Check kpi-headline slide
+  const khlXml = await extendedZip.file(extendedSlideFiles[2]).async("string");
+  assert("KPI-headline slide has headline", khlXml.includes("Revenue"));
+  assert("KPI-headline slide has big number", khlXml.includes("8.5B"));
+
+  // Check large-image slide
+  const liXml = await extendedZip.file(extendedSlideFiles[3]).async("string");
+  assert("Large-image slide has caption", liXml.includes("5G coverage map"));
+
+  // Check dashboard slide
+  const dXml = await extendedZip.file(extendedSlideFiles[4]).async("string");
+  assert("Dashboard slide has chart titles", dXml.includes("Revenue Trend"));
+
+  // Check calendar-timeline slide
+  const calXml = await extendedZip.file(extendedSlideFiles[5]).async("string");
+  assert("Calendar-timeline has month labels", calXml.includes("Jan"));
+
   // ── Summary ─────────────────────────────────────────
   const total = passed + failed;
   console.log("\n═════════════════════════════════════════════════════════");

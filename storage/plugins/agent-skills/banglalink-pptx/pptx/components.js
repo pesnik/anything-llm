@@ -291,6 +291,397 @@ function ClosingSlide(slide, { cta = "Thank You", contact }) {
   // Ghost logo via XML injection (handled by builder)
 }
 
+// ── Component: Numbered List (two-column with numbers) ──
+function NumberedList(slide, pptx, { leftTitle, left, rightTitle, right, y = 1.5 }) {
+  const colW = (P.spacing.contentWidth - 0.5) / 2;
+  const leftX = P.spacing.slideMargin;
+  const rightX = P.spacing.slideMargin + colW + 0.5;
+  
+  const renderColumn = (title, items, x) => {
+    if (title) {
+      P.addText(slide, title, {
+        x, y, w: colW, h: 0.5,
+        fontSize: 14, bold: true, color: P.colors.midGray,
+        fontFace: P.typography.fonts.body,
+      });
+    }
+    if (items) {
+      items.forEach((item, i) => {
+        const num = String(i + 1).padStart(2, "0");
+        P.addText(slide, num, {
+          x, y: y + 0.6 + i * 0.5, w: 0.5, h: 0.4,
+          fontSize: 14, bold: true, color: P.colors.orange,
+          fontFace: P.typography.fonts.heading,
+        });
+        P.addText(slide, item, {
+          x: x + 0.55, y: y + 0.6 + i * 0.5, w: colW - 0.6, h: 0.4,
+          fontSize: 13, color: P.colors.nearBlack,
+          fontFace: P.typography.fonts.body,
+        });
+      });
+    }
+  };
+  
+  renderColumn(leftTitle, left, leftX);
+  renderColumn(rightTitle, right, rightX);
+}
+
+// ── Component: KPI with Headline (headline + big number + date) ──
+function KPIWithHeadline(slide, pptx, { metrics, y = 1.8, cardW = 2.8, cardH = 2.8 }) {
+  if (!metrics || metrics.length === 0) return;
+  
+  const count = Math.min(metrics.length, 4);
+  const totalW = cardW * count + P.spacing.cardGap * (count - 1);
+  const startX = (P.spacing.slideWidth - totalW) / 2;
+  
+  for (let i = 0; i < count; i++) {
+    const m = metrics[i];
+    const x = startX + i * (cardW + P.spacing.cardGap);
+    
+    // Card background (orange border)
+    P.addRect(slide, pptx, { x, y, w: cardW, h: cardH, fill: P.colors.white, line: { color: P.colors.orange, width: 1 } });
+    
+    // Headline
+    P.addText(slide, m.headline || m.label || "", {
+      x: x + P.spacing.cardPadding, y: y + 0.2, w: cardW - P.spacing.cardPadding * 2, h: 0.8,
+      fontSize: 14, bold: true, color: P.colors.nearBlack,
+      fontFace: P.typography.fonts.body, align: "center", valign: "top",
+    });
+    
+    // Big number
+    P.addText(slide, m.value || "", {
+      x: x + P.spacing.cardPadding, y: y + 1.0, w: cardW - P.spacing.cardPadding * 2, h: 1.0,
+      fontSize: 48, bold: true, color: P.colors.orange,
+      fontFace: P.typography.fonts.heading, align: "center", valign: "middle",
+    });
+    
+    // Date
+    if (m.date) {
+      P.addText(slide, m.date, {
+        x: x + P.spacing.cardPadding, y: y + cardH - 0.5, w: cardW - P.spacing.cardPadding * 2, h: 0.4,
+        fontSize: 12, color: P.colors.orange,
+        fontFace: P.typography.fonts.body, align: "center", valign: "bottom",
+      });
+    }
+  }
+}
+
+// ── Component: Large Image Placeholder ──
+function LargeImagePlaceholder(slide, pptx, { caption, y = 1.5 }) {
+  // Large orange-bordered rectangle
+  P.addRect(slide, pptx, {
+    x: 1.5, y, w: 10.0, h: 4.5,
+    fill: P.colors.white, line: { color: P.colors.orange, width: 1 },
+  });
+  
+  // Caption below
+  if (caption) {
+    P.addBullets(slide, [caption], {
+      x: 1.5, y: y + 4.7, w: 10.0, h: 0.8,
+    });
+  }
+}
+
+// ── Component: Dashboard (2x2 mini charts) ──
+function Dashboard(slide, pptx, { charts, y = 1.5 }) {
+  if (!charts || charts.length === 0) return;
+  
+  const count = Math.min(charts.length, 4);
+  const cellW = (P.spacing.contentWidth - 0.3) / 2;
+  const cellH = 2.8;
+  
+  for (let i = 0; i < count; i++) {
+    const c = charts[i];
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const x = P.spacing.slideMargin + col * (cellW + 0.3);
+    const cellY = y + row * (cellH + 0.3);
+    
+    // Cell background
+    P.addRect(slide, pptx, { x, y: cellY, w: cellW, h: cellH, fill: P.colors.white, line: { color: P.colors.divider, width: 0.5 } });
+    
+    // Chart title
+    if (c.title) {
+      P.addText(slide, c.title, {
+        x: x + 0.2, y: cellY + 0.1, w: cellW - 0.4, h: 0.4,
+        fontSize: 11, bold: true, color: P.colors.nearBlack,
+        fontFace: P.typography.fonts.body,
+      });
+    }
+    
+    // Chart subtitle
+    if (c.subtitle) {
+      P.addText(slide, c.subtitle, {
+        x: x + 0.2, y: cellY + 0.4, w: cellW - 0.4, h: 0.3,
+        fontSize: 9, color: P.colors.midGray,
+        fontFace: P.typography.fonts.body,
+      });
+    }
+    
+    // Mini chart
+    if (c.data) {
+      P.addChart(slide, pptx, {
+        type: c.type || "bar",
+        data: c.data,
+        x: x + 0.2, y: cellY + 0.7, w: cellW - 0.4, h: cellH - 0.9,
+        options: { showLegend: false, showTitle: false },
+      });
+    }
+  }
+}
+
+// ── Component: Calendar Timeline (with calendar icons) ──
+function CalendarTimeline(slide, pptx, { milestones, y = 1.5 }) {
+  if (!milestones || milestones.length === 0) return;
+  
+  const count = Math.min(milestones.length, 6);
+  const colW = 1.7;
+  const colGap = 0.15;
+  const totalW = colW * count + colGap * (count - 1);
+  const startX = (P.spacing.slideWidth - totalW) / 2;
+  
+  for (let i = 0; i < count; i++) {
+    const m = milestones[i];
+    const x = startX + i * (colW + colGap);
+    
+    // Calendar icon (simplified: orange top bar + white box)
+    P.addRect(slide, pptx, { x: x + 0.35, y, w: colW - 0.7, h: 0.15, fill: P.colors.orange });
+    P.addRect(slide, pptx, { x: x + 0.3, y: y + 0.15, w: colW - 0.6, h: 0.8, fill: P.colors.white, line: { color: P.colors.divider, width: 0.5 } });
+    P.addText(slide, m.label || "", {
+      x: x + 0.3, y: y + 0.15, w: colW - 0.6, h: 0.8,
+      fontSize: 14, bold: true, color: P.colors.nearBlack,
+      fontFace: P.typography.fonts.body, align: "center", valign: "middle",
+    });
+    
+    // Details card (gradient gray)
+    const grayShade = Math.floor(200 + (i / count) * 40);
+    P.addRect(slide, pptx, { x, y: y + 1.1, w: colW, h: 4.5, fill: `D${grayShade.toString(16)}D${grayShade.toString(16)}D${grayShade.toString(16)}` });
+    
+    // Month + details
+    P.addText(slide, m.month || m.label || "", {
+      x: x + 0.15, y: y + 1.2, w: colW - 0.3, h: 0.4,
+      fontSize: 12, bold: true, color: P.colors.nearBlack,
+      fontFace: P.typography.fonts.body,
+    });
+    P.addText(slide, m.details || m.desc || "", {
+      x: x + 0.15, y: y + 1.6, w: colW - 0.3, h: 3.8,
+      fontSize: 11, color: P.colors.nearBlack,
+      fontFace: P.typography.fonts.body, wrap: true,
+    });
+  }
+}
+
+// ── Component: Table with Checklist ──
+function TableWithChecklist(slide, pptx, { headers, rows, notes, y = 1.8 }) {
+  if (!rows || rows.length === 0) return;
+  
+  const tableW = 9.5;
+  const tableData = [];
+  
+  // Headers (orange bg)
+  if (headers) {
+    tableData.push(headers.map(h => ({
+      text: h,
+      options: {
+        bold: true, fontSize: 12, fontFace: P.typography.fonts.body,
+        color: P.colors.white, fill: { color: P.colors.orange },
+        align: "left", valign: "middle", margin: [4, 6, 4, 6],
+      },
+    })));
+    // Add empty header for checklist column
+    tableData[0].push({ text: "", options: { fill: { color: P.colors.orange } } });
+  }
+  
+  // Rows
+  rows.forEach((row, idx) => {
+    const rowData = row.map(cell => ({
+      text: String(cell),
+      options: {
+        fontSize: 12, fontFace: P.typography.fonts.body,
+        color: P.colors.nearBlack,
+        fill: { color: idx % 2 === 1 ? P.colors.lightGray : P.colors.white },
+        align: "left", valign: "middle", margin: [4, 6, 4, 6],
+      },
+    }));
+    // Add checkmark
+    rowData.push({
+      text: row[row.length - 1] === true || row[row.length - 1] === "✓" ? "✓" : "",
+      options: {
+        fontSize: 18, color: P.colors.orange, bold: true,
+        fill: { color: idx % 2 === 1 ? P.colors.lightGray : P.colors.white },
+        align: "center", valign: "middle",
+      },
+    });
+    tableData.push(rowData);
+  });
+  
+  const colCount = headers ? headers.length + 1 : rows[0].length + 1;
+  const colW = Array(colCount).fill(tableW / colCount);
+  colW[colW.length - 1] = 0.8; // Checklist column narrower
+  
+  slide.addTable(tableData, {
+    x: P.spacing.slideMargin, y, w: tableW,
+    colW, rowH: 0.45,
+    border: { type: "solid", pt: 0.5, color: P.colors.divider },
+  });
+  
+  // Notes
+  if (notes) {
+    P.addText(slide, notes, {
+      x: P.spacing.slideMargin + tableW + 0.3, y, w: 2.5, h: 2.0,
+      fontSize: 10, color: P.colors.midGray,
+      fontFace: P.typography.fonts.body, wrap: true,
+    });
+  }
+}
+
+// ── Component: Combined Table + Pie Chart ──
+function TablePieCombo(slide, pptx, { tables, pieData, pieTitle, y = 1.5 }) {
+  const leftW = 7.0;
+  const rightX = P.spacing.slideMargin + leftW + 0.5;
+  const rightW = P.spacing.contentWidth - leftW - 0.5;
+  
+  // Left side: tables
+  let tableY = y;
+  if (tables) {
+    tables.forEach(t => {
+      if (t.title) {
+        P.addText(slide, t.title, {
+          x: P.spacing.slideMargin, y: tableY, w: leftW, h: 0.4,
+          fontSize: 14, bold: true, color: P.colors.nearBlack,
+          fontFace: P.typography.fonts.body,
+        });
+        tableY += 0.45;
+      }
+      if (t.headers && t.rows) {
+        const tableData = [];
+        tableData.push(t.headers.map(h => ({
+          text: h, options: {
+            bold: true, fontSize: 11, fontFace: P.typography.fonts.body,
+            color: P.colors.white, fill: { color: P.colors.orange },
+            align: "left", valign: "middle", margin: [3, 6, 3, 6],
+          },
+        })));
+        t.rows.forEach((row, idx) => {
+          tableData.push(row.map(cell => ({
+            text: String(cell), options: {
+              fontSize: 11, fontFace: P.typography.fonts.body,
+              color: P.colors.nearBlack,
+              fill: { color: idx % 2 === 1 ? P.colors.lightGray : P.colors.white },
+              align: "left", valign: "middle", margin: [3, 6, 3, 6],
+            },
+          })));
+        });
+        slide.addTable(tableData, {
+          x: P.spacing.slideMargin, y: tableY, w: leftW,
+          colW: leftW / t.headers.length, rowH: 0.35,
+          border: { type: "solid", pt: 0.5, color: P.colors.divider },
+        });
+        tableY += 0.35 * (tableData.length + 1) + 0.3;
+      }
+    });
+  }
+  
+  // Right side: pie chart
+  if (pieData) {
+    if (pieTitle) {
+      P.addText(slide, pieTitle, {
+        x: rightX, y, w: rightW, h: 0.5,
+        fontSize: 11, color: P.colors.nearBlack,
+        fontFace: P.typography.fonts.body,
+      });
+    }
+    P.addChart(slide, pptx, {
+      type: "pie",
+      data: pieData,
+      x: rightX, y: y + 0.5, w: rightW, h: 3.5,
+      options: { showPercent: true, showLegend: true, legendPos: "b" },
+    });
+  }
+}
+
+// ── Component: Table with Notes ──
+function TableWithNotes(slide, pptx, { headers, rows, notes, y = 1.8 }) {
+  const tableW = 10.0;
+  const tableData = [];
+  
+  if (headers) {
+    tableData.push(headers.map(h => ({
+      text: h, options: {
+        bold: true, fontSize: 12, fontFace: P.typography.fonts.body,
+        color: P.colors.white, fill: { color: P.colors.orange },
+        align: "left", valign: "middle", margin: [4, 8, 4, 8],
+      },
+    })));
+  }
+  
+  if (rows) {
+    rows.forEach((row, idx) => {
+      tableData.push(row.map(cell => ({
+        text: String(cell), options: {
+          fontSize: 12, fontFace: P.typography.fonts.body,
+          color: P.colors.nearBlack,
+          fill: { color: idx % 2 === 1 ? P.colors.lightGray : P.colors.white },
+          align: "left", valign: "middle", margin: [4, 8, 4, 8],
+        },
+      })));
+    });
+  }
+  
+  slide.addTable(tableData, {
+    x: P.spacing.slideMargin, y, w: tableW,
+    colW: tableW / (headers?.length || rows[0]?.length || 1),
+    rowH: 0.45,
+    border: { type: "solid", pt: 0.5, color: P.colors.divider },
+  });
+  
+  // Notes on right side
+  if (notes) {
+    P.addText(slide, notes, {
+      x: P.spacing.slideMargin + tableW + 0.3, y, w: 1.8, h: 3.0,
+      fontSize: 10, color: P.colors.midGray,
+      fontFace: P.typography.fonts.body, wrap: true,
+    });
+  }
+}
+
+// ── Component: Dashboard with Notes ──
+function DashboardWithNotes(slide, pptx, { charts, notes, footer, y = 1.5 }) {
+  // Same as Dashboard but with notes area
+  Dashboard(slide, pptx, { charts, y });
+  
+  if (notes) {
+    P.addText(slide, notes, {
+      x: 8.5, y: 5.5, w: 4.5, h: 1.5,
+      fontSize: 10, color: P.colors.midGray,
+      fontFace: P.typography.fonts.body, wrap: true,
+    });
+  }
+  
+  if (footer) {
+    P.addText(slide, footer, {
+      x: P.spacing.slideMargin, y: 7.0, w: P.spacing.contentWidth, h: 0.3,
+      fontSize: 8, color: P.colors.midGray,
+      fontFace: P.typography.fonts.body,
+    });
+  }
+}
+
+// ── Component: Closing Slide (white bg version) ──
+function ClosingSlideWhite(slide, { cta = "Thank You" }) {
+  Background(slide, { color: P.colors.white });
+  
+  P.addText(slide, cta, {
+    x: 3.0, y: 2.5, w: 7.0, h: 1.5,
+    fontSize: 36, color: P.colors.nearBlack,
+    fontFace: P.typography.fonts.body,
+    align: "center", valign: "middle",
+  });
+  
+  // Ghost logo (left side, light beige)
+  // Handled by ghost-logo XML injection
+}
+
 // ── Component Registry ──
 const components = {
   Background,
@@ -306,6 +697,16 @@ const components = {
   IconCircle,
   Quote,
   ClosingSlide,
+  NumberedList,
+  KPIWithHeadline,
+  LargeImagePlaceholder,
+  Dashboard,
+  CalendarTimeline,
+  TableWithChecklist,
+  TablePieCombo,
+  TableWithNotes,
+  DashboardWithNotes,
+  ClosingSlideWhite,
 };
 
 // ── Component metadata for agent discovery ──
@@ -323,6 +724,16 @@ const registry = [
   { name: "IconCircle", use: "Colored circle with icon", props: "iconData, x, y, size, bgColor" },
   { name: "Quote", use: "Quote with attribution", props: "text, attribution, y" },
   { name: "ClosingSlide", use: "Thank You slide with ghost logo", props: "cta, contact" },
+  { name: "NumberedList", use: "Two-column numbered items (01-09)", props: "leftTitle, left, rightTitle, right, y" },
+  { name: "KPIWithHeadline", use: "KPI cards with headline + big number + date", props: "metrics, y, cardW, cardH" },
+  { name: "LargeImagePlaceholder", use: "Large orange-bordered rectangle + caption", props: "caption, y" },
+  { name: "Dashboard", use: "2x2 grid of mini charts", props: "charts, y" },
+  { name: "CalendarTimeline", use: "Timeline with calendar icons", props: "milestones, y" },
+  { name: "TableWithChecklist", use: "Table with checkmark column", props: "headers, rows, notes, y" },
+  { name: "TablePieCombo", use: "Tables + pie chart side by side", props: "tables, pieData, pieTitle, y" },
+  { name: "TableWithNotes", use: "Table with notes on right side", props: "headers, rows, notes, y" },
+  { name: "DashboardWithNotes", use: "Dashboard with notes and footer", props: "charts, notes, footer, y" },
+  { name: "ClosingSlideWhite", use: "Thank You slide on white bg", props: "cta" },
 ];
 
 module.exports = {

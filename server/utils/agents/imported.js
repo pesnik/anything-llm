@@ -17,7 +17,13 @@ class ImportedPlugin {
       this.config.hubId,
       "handler.js"
     );
-    delete require.cache[require.resolve(this.handlerLocation)];
+    // Nuclear option: clear ALL cached modules from this plugin directory
+    const pluginDir = path.resolve(pluginsPath, this.config.hubId);
+    for (const cacheKey of Object.keys(require.cache)) {
+      if (cacheKey.startsWith(pluginDir)) {
+        delete require.cache[cacheKey];
+      }
+    }
     this.handler = require(this.handlerLocation);
     this.name = config.hubId;
     this.startupConfig = {
@@ -210,12 +216,14 @@ class ImportedPlugin {
 
   plugin(runtimeArgs = {}) {
     const customFunctions = this.handler.runtime;
+    console.log(`[imported-debug] plugin() called for ${this.name}, customFunctions:`, Object.keys(customFunctions || {}));
     return {
       runtimeArgs,
       name: this.name,
       config: this.config,
       setup(aibitat) {
-        aibitat.function({
+        console.log(`[imported-debug] setup() called for ${this.name}`);
+        const fnConfig = {
           super: aibitat,
           name: this.name,
           config: this.config,
@@ -241,7 +249,10 @@ class ImportedPlugin {
             aibitat,
             this.config.name
           ),
-        });
+        };
+        console.log(`[imported-debug] registering function:`, { name: fnConfig.name, hasHandler: typeof fnConfig.handler });
+        aibitat.function(fnConfig);
+        console.log(`[imported-debug] function registered successfully`);
       },
     };
   }

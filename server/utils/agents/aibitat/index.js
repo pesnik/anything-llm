@@ -888,6 +888,10 @@ ${this.getHistory({ to: route.to })
       ?.map((name) => this.functions.get(this.#parseFunctionName(name)))
       .filter((a) => !!a);
 
+    console.log(`[aibitat-debug] fromConfig.functions:`, fromConfig.functions);
+    console.log(`[aibitat-debug] resolved functions:`, functions?.map(f => f.name));
+    console.log(`[aibitat-debug] total registered functions:`, this.functions.size);
+
     // Rerank tools based on user prompt if enabled
     if (ToolReranker.isEnabled() && functions?.length) {
       const toolReranker = new ToolReranker();
@@ -1040,7 +1044,21 @@ https://docs.anythingllm.com/agent/intelligent-tool-selection
         `[debug]: ${fn.caller} is attempting to call \`${name}\` tool ${JSON.stringify(args, null, 2)}`
       );
 
-      const result = await fn.handler(args);
+      console.log(`[aibitat-debug] fn keys:`, Object.keys(fn));
+      console.log(`[aibitat-debug] fn.handler type:`, typeof fn.handler);
+      console.log(`[aibitat-debug] fn.handler name:`, fn.handler?.name);
+      console.log(`[aibitat-debug] fn.super:`, !!fn.super);
+
+      let result;
+      try {
+        console.log(`[aibitat-debug] about to call fn.handler(args)`);
+        result = await fn.handler(args);
+        console.log(`[aibitat-debug] fn.handler returned:`, typeof result);
+      } catch (e) {
+        console.error(`[aibitat-debug] fn.handler threw:`, e.message);
+        console.error(e.stack);
+        result = `Error: ${e.message}`;
+      }
       Telemetry.sendTelemetry("agent_tool_call", { tool: name }, null, true);
       this.emitter.emit("toolCallResult", {
         toolName: name,
@@ -1451,7 +1469,9 @@ https://docs.anythingllm.com/agent/intelligent-tool-selection
    * @param functionConfig The function configuration.
    */
   function(functionConfig) {
+    console.log(`[aibitat-debug] function() registering: ${functionConfig.name}, hasHandler: ${typeof functionConfig.handler}`);
     this.functions.set(functionConfig.name, functionConfig);
+    console.log(`[aibitat-debug] function() registered. Total functions: ${this.functions.size}`);
     return this;
   }
 }

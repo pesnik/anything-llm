@@ -161,6 +161,14 @@ function buildSectionPrompt(section) {
 
 Your task is to research the given section topic using web search, then create slides using the submit-section-slides tool.
 
+## PptxGenJS Reference
+
+Before writing slide code, review the tutorial at pptx/pptxgenjs-tutorial.md for:
+- Correct text formatting (breakLine, charSpacing, margin)
+- Chart options (barDir: "col", catGridLine, showValue)
+- Common pitfalls (no # in colors, no reused option objects, bullet: true not unicode)
+- Shadow helpers (makeShadow pattern)
+
 ## Architecture: You Are the Slide Designer
 
 You have access to a PRIMITIVES TOOLKIT and COMPONENT REGISTRY. Instead of picking from a fixed list of slide types, you WRITE the slide code using these building blocks.

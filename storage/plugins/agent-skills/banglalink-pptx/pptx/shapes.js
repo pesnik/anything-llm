@@ -177,13 +177,14 @@ function addBrandedTable(slide, pptx, headers, rows, x, y, w, colW) {
 function addBulletList(slide, items, x, y, w, h) {
   if (!items || items.length === 0) return;
 
-  const bulletPoints = items.map((text) => ({
+  const bulletPoints = items.map((text, idx) => ({
     text,
     options: {
       fontSize: brand.fontSize.body,
       color: brand.colors.nearBlack,
       fontFace: brand.fonts.body,
       bullet: { characterCode: "2713" },
+      breakLine: idx < items.length - 1,
       paraSpaceAfter: 6,
     },
   }));
@@ -195,6 +196,7 @@ function addBulletList(slide, items, x, y, w, h) {
     h,
     valign: "top",
     lineSpacingMultiple: 1.2,
+    margin: 0,
   });
 }
 

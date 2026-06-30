@@ -118,6 +118,8 @@ function renderBulletSlide(slide, pptx, data) {
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       valign: "top",
+      charSpacing: 2,
+      margin: 0,
     });
   }
 
@@ -131,6 +133,7 @@ function renderBulletSlide(slide, pptx, data) {
       color: c.darkGray,
       fontFace: brand.fonts.body,
       valign: "top",
+      margin: 0,
     });
   }
 
@@ -483,26 +486,61 @@ function renderChartSlide(slide, pptx, data) {
       y: 1.8,
       w: 9.5,
       h: 5.0,
+      barDir: "col",
       showLegend: true,
       legendPos: "r",
       legendFontSize: brand.fontSize.footnote,
       showTitle: false,
       chartColors: chartColors,
+      chartArea: { fill: { color: c.white }, roundedCorners: true },
+      catAxisLabelColor: c.midGray,
+      valAxisLabelColor: c.midGray,
       catAxisLabelFontSize: brand.fontSize.footnote,
       valAxisLabelFontSize: brand.fontSize.footnote,
-      dataLabelFontSize: brand.fontSize.footnote,
+      catGridLine: { style: "none" },
+      valGridLine: { color: c.dividerGray, size: 0.5 },
+      showValue: true,
+      dataLabelPosition: "outEnd",
       dataLabelColor: c.nearBlack,
-      valGridLine: { style: "dash", color: c.dividerGray, size: 0.5 },
+      dataLabelFontSize: brand.fontSize.footnote,
     };
 
     if (chartType === "pie" || chartType === "doughnut") {
       chartOpts.showLegend = true;
       chartOpts.legendPos = "r";
+      chartOpts.showPercent = true;
       delete chartOpts.valGridLine;
-      delete chartOpts.catAxisOrientation;
+      delete chartOpts.catGridLine;
+      delete chartOpts.barDir;
+      delete chartOpts.catAxisLabelColor;
+      delete chartOpts.valAxisLabelColor;
+      delete chartOpts.catAxisLabelFontSize;
+      delete chartOpts.valAxisLabelFontSize;
+      delete chartOpts.showValue;
+      delete chartOpts.dataLabelPosition;
     }
 
-    if (chartType === "bar") {
+    if (chartType === "line") {
+      chartOpts.lineSize = 3;
+      chartOpts.lineSmooth = true;
+      delete chartOpts.barDir;
+    }
+
+    if (chartType === "area") {
+      delete chartOpts.barDir;
+    }
+
+    if (chartType === "radar") {
+      delete chartOpts.valGridLine;
+      delete chartOpts.catGridLine;
+      delete chartOpts.barDir;
+    }
+
+    if (chartType === "scatter") {
+      delete chartOpts.barDir;
+    }
+
+    if (chartType === "bar3d") {
       chartOpts.barDir = "bar";
     }
 

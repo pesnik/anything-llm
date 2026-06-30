@@ -204,12 +204,74 @@ When editing an existing presentation:
 |-------|----------|
 | `#` prefix with hex colors | Remove `#` — use `"FF0000"` not `"#FF0000"` |
 | 8-char hex for opacity | Use `opacity` property instead |
-| Unicode bullets (•) | Use `bullet: true` |
-| Missing `breakLine: true` | Add between array items |
-| Reusing option objects | Create fresh objects each time |
+| Unicode bullets (•) | Use `bullet: true` or `bullet: { characterCode: "2713" }` |
+| Missing `breakLine: true` | Add between array items for multi-line text |
+| Reusing option objects | Create fresh objects each time (PptxGenJS mutates in-place) |
 | Text-only slides | Add visual element (chart, cards, icons) |
 | Repeating same layout | Alternate layout types |
 | Low-contrast text | Check against background color |
+| `letterSpacing` | Use `charSpacing` instead (letterSpacing is silently ignored) |
+| Negative shadow offset | Use `angle: 270` with positive offset for upward shadows |
+| `lineSpacing` with bullets | Use `paraSpaceAfter` instead (lineSpacing causes excessive gaps) |
+| `ROUNDED_RECTANGLE` + accent bar | Use `RECTANGLE` instead (accent won't cover rounded corners) |
+| `margin` not set | Set `margin: 0` when aligning text with shapes/icons at same x-position |
+| `barDir: "bar"` for charts | Use `barDir: "col"` for vertical columns (template standard) |
+| Chart gridlines | Use `catGridLine: { style: "none" }` for clean look |
+| Bubble chart broken | pptxgenjs 4.0.1 has a bug — skip bubble charts |
+
+---
+
+## PptxGenJS Quick Reference
+
+### Text
+```javascript
+// Multi-line text (requires breakLine: true)
+slide.addText([
+  { text: "Line 1", options: { breakLine: true } },
+  { text: "Line 2", options: { breakLine: true } },
+  { text: "Line 3" }
+], { x: 0.5, y: 0.5, w: 8, h: 2 });
+
+// CharSpacing for headings
+slide.addText("HEADING", { charSpacing: 6, ... });
+
+// Margin: 0 for precise alignment
+slide.addText("Title", { x: 1, y: 1, w: 5, h: 1, margin: 0 });
+```
+
+### Charts
+```javascript
+// Bar chart (vertical columns)
+slide.addChart(pres.charts.BAR, chartData, {
+  barDir: "col",
+  chartColors: ["EF6E23", "F86C02"],
+  catGridLine: { style: "none" },
+  valGridLine: { color: "D9D9D9", size: 0.5 },
+  showValue: true,
+  dataLabelPosition: "outEnd",
+  chartArea: { fill: { color: "FFFFFF" }, roundedCorners: true },
+});
+
+// Line chart (smooth curves)
+slide.addChart(pres.charts.LINE, chartData, {
+  lineSize: 3,
+  lineSmooth: true,
+});
+
+// Pie/Doughnut (show percentages)
+slide.addChart(pres.charts.PIE, chartData, {
+  showPercent: true,
+});
+```
+
+### Shadows
+```javascript
+// Shadow (never use negative offset)
+const shadow = { type: "outer", blur: 6, offset: 2, angle: 135, color: "000000", opacity: 0.15 };
+
+// Upward shadow (footer bar)
+const upShadow = { type: "outer", blur: 4, offset: 2, angle: 270, color: "000000", opacity: 0.1 };
+```
 
 ---
 

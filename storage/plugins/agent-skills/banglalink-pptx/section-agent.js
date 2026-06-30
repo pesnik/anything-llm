@@ -164,11 +164,19 @@ Your task is to research the given section topic using web search, then create s
 
 ## PptxGenJS Reference
 
-Before writing slide code, review the tutorial at pptx/pptxgenjs-tutorial.md for:
-- Correct text formatting (breakLine, charSpacing, margin)
-- Chart options (barDir: "col", catGridLine, showValue)
-- Common pitfalls (no # in colors, no reused option objects, bullet: true not unicode)
-- Shadow helpers (makeShadow pattern)
+Before writing slide code, review the tutorial at pptx/pptxgenjs-tutorial.md for ALL sections:
+- Setup & Basic Structure (pres layout, writeFile)
+- Layout Dimensions (LAYOUT_WIDE = 13.3" × 7.5")
+- Text & Formatting (charSpacing, margin: 0, breakLine: true, rich text arrays)
+- Lists & Bullets (bullet: true, characterCode: 2713, numbered lists, indentLevel)
+- Shapes (RECTANGLE, OVAL, LINE, ROUNDED_RECTANGLE, transparency, shadow, makeShadow helper)
+- Images (base64 data, sizing modes: contain/cover, rotate)
+- Icons (react-icons → sharp → base64 PNG pipeline)
+- Slide Backgrounds (solid color, transparency, gradient effect with overlapping shapes)
+- Tables (styled header rows, colW, rowH, border, colspan)
+- Charts (barDir: "col", catGridLine: none, showValue, dataLabelPosition, chartArea, all chart types: BAR, LINE, PIE, DOUGHNUT, AREA, RADAR, SCATTER, BAR3D)
+- Slide Masters (defineSlideMaster with objects[])
+- Common Pitfalls (no # in colors, no reused option objects, bullet: true not unicode, breakLine between items, makeShadow pattern)
 
 ## Architecture: You Are the Slide Designer
 

@@ -687,15 +687,15 @@ function renderNumberedListSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.headerY,
+      y: 0.22,
       w: l.contentW,
-      h: l.headerH,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       align: "left",
-      valign: "bottom",
+      valign: "top",
     });
   }
 
@@ -703,7 +703,7 @@ function renderNumberedListSlide(slide, pptx, data) {
   const colW = (l.contentW - 0.5) / 2;
   const leftX = l.marginX;
   const rightX = l.marginX + colW + 0.5;
-  const startY = l.headerY + l.headerH + 0.5;
+  const startY = 0.9;
 
   const renderColumn = (items, x) => {
     if (!items) return;
@@ -748,15 +748,15 @@ function renderKPIHeadlineSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.headerY,
+      y: 0.22,
       w: l.contentW,
-      h: l.headerH,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       align: "left",
-      valign: "bottom",
+      valign: "top",
     });
   }
 
@@ -768,7 +768,7 @@ function renderKPIHeadlineSlide(slide, pptx, data) {
     const gap = 0.4;
     const totalW = cardW * count + gap * (count - 1);
     const startX = (l.contentW - totalW) / 2 + l.marginX;
-    const startY = l.headerY + l.headerH + 0.5;
+    const startY = 0.9;
 
     for (let i = 0; i < count; i++) {
       const m = data.metrics[i];
@@ -843,22 +843,22 @@ function renderLargeImageSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.headerY,
+      y: 0.22,
       w: l.contentW,
-      h: l.headerH,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       align: "left",
-      valign: "bottom",
+      valign: "top",
     });
   }
 
   // Large orange-bordered rectangle
   slide.addShape(pptx.ShapeType.rect, {
     x: 1.5,
-    y: l.headerY + l.headerH + 0.3,
+    y: 0.9,
     w: 10.0,
     h: 4.5,
     fill: { color: c.white },
@@ -869,7 +869,7 @@ function renderLargeImageSlide(slide, pptx, data) {
   if (data.caption) {
     slide.addText(data.caption, {
       x: 1.5,
-      y: l.headerY + l.headerH + 5.0,
+      y: 5.6,
       w: 10.0,
       h: 0.8,
       fontSize: 13,
@@ -893,15 +893,15 @@ function renderDashboardSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.headerY,
+      y: 0.22,
       w: l.contentW,
-      h: l.headerH,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       align: "left",
-      valign: "bottom",
+      valign: "top",
     });
   }
 
@@ -910,7 +910,7 @@ function renderDashboardSlide(slide, pptx, data) {
     const count = Math.min(data.charts.length, 4);
     const cellW = (l.contentW - 0.3) / 2;
     const cellH = 2.8;
-    const startY = l.headerY + l.headerH + 0.3;
+    const startY = 0.9;
 
     for (let i = 0; i < count; i++) {
       const ch = data.charts[i];
@@ -985,15 +985,15 @@ function renderCalendarTimelineSlide(slide, pptx, data) {
   if (data.title) {
     slide.addText(data.title, {
       x: l.marginX,
-      y: l.headerY,
+      y: 0.22,
       w: l.contentW,
-      h: l.headerH,
+      h: 0.55,
       fontSize: brand.fontSize.slideTitle,
       bold: true,
       color: c.swooshOrange,
       fontFace: brand.fonts.heading,
       align: "left",
-      valign: "bottom",
+      valign: "top",
     });
   }
 
@@ -1004,7 +1004,7 @@ function renderCalendarTimelineSlide(slide, pptx, data) {
     const colGap = 0.15;
     const totalW = colW * count + colGap * (count - 1);
     const startX = (l.contentW - totalW) / 2 + l.marginX;
-    const startY = l.headerY + l.headerH + 0.5;
+    const startY = 0.9;
 
     for (let i = 0; i < count; i++) {
       const m = data.milestones[i];

@@ -43,3 +43,62 @@ Then restart with `yarn dev`.
 - Section-break slides have orange backgrounds — QA must skip them to avoid false positives
 - KPI cards are 2.8"x2.5" — values ≤12 chars, labels ≤20 chars
 - `originalSections` deep-copy prevents QA reviewer from fabricating data
+
+## Teradata Skills (Viewpoint + EXPLAIN & Stats)
+
+### Source of Truth
+**Source repo:** `~/Pesnik/skills/anythingllm-teradata-skills/`
+
+Monorepo containing both Teradata skills. Each skill has its own subdirectory with its own `plugin.json`, `handler.js`, and scripts.
+
+```
+anythingllm-teradata-skills/
+├── scripts/build.js          ← builds both skills
+├── teradata-viewpoint/        ← skill #1
+│   ├── handler.js             Node wrapper → fetch_sessions.py + analyze_sessions.py
+│   ├── plugin.json            accepts VIEWPOINT_USER, VIEWPOINT_PASS, VIEWPOINT_URL
+│   ├── scripts/
+│   │   ├── fetch_sessions.py  fetch active sessions from Viewpoint REST API
+│   │   ├── analyze_sessions.py structured analysis (summary, top-cpu, blocked, skew, etc.)
+│   │   └── jq_queries.sh      ad-hoc jq one-liners for quick drilldowns
+│   └── references/
+│       └── session_fields.md  reference of all 43 session fields
+└── teradata-explain-stats/    ← skill #2
+    ├── handler.js             Node wrapper → explain_sql.sh
+    ├── plugin.json            accepts TD_HOST, TD_USER, TD_PASS
+    └── scripts/
+        ├── explain_sql.sh     run EXPLAIN via BTEQ (Docker or local)
+        └── extract_and_explain.py  orchestrate EXPLAIN for sessions from JSON
+```
+
+### Build & Deploy
+```bash
+# Build both skills
+cd ~/Pesnik/skills/anythingllm-teradata-skills
+node scripts/build.js
+
+# Deploy both to AnythingLLM
+rm -rf ~/Tools/anything-llm/server/storage/plugins/agent-skills/teradata-viewpoint
+rm -rf ~/Tools/anything-llm/server/storage/plugins/agent-skills/teradata-explain-stats
+cp -r ~/Pesnik/skills/anythingllm-teradata-skills/dist/teradata-viewpoint \
+  ~/Tools/anything-llm/server/storage/plugins/agent-skills/teradata-viewpoint
+cp -r ~/Pesnik/skills/anythingllm-teradata-skills/dist/teradata-explain-stats \
+  ~/Tools/anything-llm/server/storage/plugins/agent-skills/teradata-explain-stats
+```
+
+Then reload the AnythingLLM UI. Configure credentials under `@agent` → Agent Skills for each skill.
+
+### Chained Workflow
+1. Viewpoint fetches sessions → `/tmp/td_sessions.json`
+2. User passes `session_id` from viewpoint output to `teradata-explain-stats` skill
+3. EXPLAIN stats skill reads `/tmp/td_sessions.json` to get `sql_text` for that session
+
+### EXPLAIN Execution Priority
+The `explain_sql.sh` script auto-selects:
+1. **Docker (teradata/tpt)** — preferred if Docker is running
+2. **Local BTEQ** — fallback if Docker is unavailable
+
+### Safety
+- EXPLAIN is read-only by design
+- Script blocks INSERT/UPDATE/DELETE/MERGE/UPSERT
+- Only SELECT/WITH (CTE) queries are permitted

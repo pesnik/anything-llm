@@ -43,6 +43,8 @@ Then restart with `yarn dev`.
 - Section-break slides have orange backgrounds — QA must skip them to avoid false positives
 - KPI cards are 2.8"x2.5" — values ≤12 chars, labels ≤20 chars
 - `originalSections` deep-copy prevents QA reviewer from fabricating data
+- Agent is a **designer**, not a template-filler — decides layout, slide count, content density
+- Non-negotiable: section-break first, closing last, logo top-right, brand colors/fonts
 
 ## Teradata Skills (Viewpoint + EXPLAIN & Stats)
 
